@@ -68,6 +68,16 @@ type itemSearch = {
     "id": {
         "kind": string,
         "videoId": string
+    },
+    "snippet": {
+        "publishedAt": Date|string,
+        "channelId": string,
+        "title": string,
+        "description": string,
+        "thumbnails": thumbnails
+        "channelTitle": string,
+        "liveBroadcastContent": string,
+        "publishTime": Date|string
     }
 }
 
