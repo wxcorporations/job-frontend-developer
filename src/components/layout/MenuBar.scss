@@ -1,0 +1,29 @@
+.menu-bar {
+    position: relative;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    
+    & .container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 60px;
+        border: 1px solid #eee;
+        border-radius: 50px;
+    }
+
+    &__icon {
+        border: unset;
+        position: absolute;
+        left: 32px;
+    }
+
+    &__content {
+        justify-content: center;
+    }
+}
+
+@media screen and (min-width: 768px) { 
+    
+}
