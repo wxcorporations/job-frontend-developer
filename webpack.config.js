@@ -17,7 +17,8 @@ module.exports = {
         filename: '[name].[hash].js',
         clean: true
     },
-    devServer: {
+    devServer: { 
+        historyApiFallback: true,
         static: './dist',
         hot: true,
         port: 3000,
