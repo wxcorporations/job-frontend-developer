@@ -5,6 +5,11 @@ import Home from "./src/components/pages/Home";
 import Favorites from "./src/components/pages/Favorites";
 import About from "./src/components/pages/About";
 
+import PageTop from "./src/components/layout/PageTop";
+
+const pageTop = PageTop()
+pageTop.init()
+
 import './style.scss'
 
 
