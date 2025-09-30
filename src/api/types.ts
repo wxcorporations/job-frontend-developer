@@ -62,7 +62,7 @@ export type ResponseVideo = {
 }
 
 
-type itemSearch = {
+export type ItemSearch = {
     "kind": string,
     "etag": string,
     "id": {
@@ -90,5 +90,5 @@ export type ResponseSearch = {
         "totalResults": number,
         "resultsPerPage": number
     },
-    "items": itemSearch[]
+    "items": ItemSearch[]
 }
