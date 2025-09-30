@@ -1,0 +1,38 @@
+.section-player {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 32px;
+    padding: 40px 0 0 0;
+
+    &__embed {
+        width: 100%;
+        height: auto;
+
+        &-infor {
+            padding: 16px;
+        }
+    }
+
+    &__content {
+        width: 100%;
+        padding: 16px 0 0 0;
+    }
+}
+
+
+@media screen and (min-width: 1025px) {
+    .section-player {
+        flex-direction: row;
+        padding: 40px 0;
+        
+        &__embed {
+            width: 65%;
+        }
+
+        &__content {
+            width: 35%;
+            padding: 0 16px;
+        }
+    }
+}
