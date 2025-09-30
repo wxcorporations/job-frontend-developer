@@ -1,0 +1,108 @@
+.card-video {
+    border-radius: 14px;
+    padding: 4px;
+
+    &__img {
+        position: relative;
+        width: 100%;
+        height: auto;
+
+        & img {
+            position: relative;
+            width: 100%;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+
+        &-action {
+            position: absolute;
+            display: flex;
+            bottom: 12px;
+            right: 12px;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+
+            & i::before {
+                -webkit-text-stroke: 4px #f85555; /* width and color */
+                opacity: 0.9;
+                color: white;
+                font-size: 32px;
+            }
+
+            &.is-active {
+                    i::before {
+                        color: red;
+                    }
+                }
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        padding: 8px;
+
+        &-info {
+
+            & .title {
+                font-size: 12px;
+            }
+
+            & .description {}
+
+            & .channel {}
+        }
+
+
+    }
+}
+
+
+@media screen and (min-width: 768px) {
+    .card-video {
+        display: flex;
+        width: 100%;
+        height: 120px;
+        max-width: 400px;
+
+
+        &__img {
+            width: unset;
+
+            & img {
+                width: auto;
+                height: 110px;
+            }
+
+            &-action {
+                bottom: 8px;
+                right: 12px;
+                
+                & i::before {
+                    color: white;
+
+
+                }
+
+                
+            }
+        }
+
+        &__content {
+            flex-direction: row;
+            justify-content: space-between;
+
+            &-info {
+                & .title {
+                    font-size: 1rem;
+                    font-weight: 600;
+                }
+
+                & .description {}
+
+                & .channel {}
+            }
+        }
+    }
+}
