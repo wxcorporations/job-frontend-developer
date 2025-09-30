@@ -1,0 +1,13 @@
+.list-videos {
+    display: flex;
+    flex-direction: column;
+}
+
+
+@media screen and (min-width: 768px) {
+    .list-videos {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 32px;
+    }
+}
