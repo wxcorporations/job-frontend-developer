@@ -1,5 +1,4 @@
 .card-video {
-    border-radius: 14px;
     padding: 4px;
 
     &__img {
@@ -11,7 +10,7 @@
             position: relative;
             width: 100%;
             object-fit: contain;
-            border-radius: 12px;
+            border-radius: 8px;
         }
 
         &-action {

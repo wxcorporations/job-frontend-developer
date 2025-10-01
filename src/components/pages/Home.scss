@@ -1,0 +1,15 @@
+.initial-template {
+    height: 68vh;
+}
+
+@media screen and (min-width: 360px) {
+    .initial-template {
+        height: 60vh;
+    }
+}
+
+@media screen and (min-width: 360px) {
+    .initial-template {
+        height: 75vh;
+    }
+}

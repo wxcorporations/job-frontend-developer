@@ -14,7 +14,7 @@ export default class DataVideo implements Video {
     }
 
     getThumb() {
-        return this.data?.snippet?.thumbnails?.default?.url || '';
+        return this.data?.snippet?.thumbnails?.medium?.url || this.data?.snippet?.thumbnails?.medium?.url || '';
     }
 
     getChannel() {

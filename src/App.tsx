@@ -7,15 +7,13 @@ import { Outlet } from "react-router"
 export default function App() {
   return (<>
     <MenuBar>
-      <InputSearch search={(value: string) => console.log('======> ', value)} />
+      {/* <InputSearch search={(value: string) => console.log('======> ', value)} /> */}
     </MenuBar>
 
     <Main>
       <Outlet />
     </Main>
 
-    <FooterBar>
-      footer
-    </FooterBar>
+    <FooterBar />
   </>)
 };

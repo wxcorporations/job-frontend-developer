@@ -37,7 +37,7 @@ export default function CardVideo(props: DataCard) {
             <div role="card" id={props.data.getVideoId()} className='card-video' onClick={handleClick}>
                 <div className='card-video__img'>
                     <div className={`card-video__img-action ${isFavorite ? 'is-active' : ''}`} onClick={toggleFavorite} >
-                        <i className="bi bi-heart-fill shadow-sm"></i>
+                        <i className="bi bi-heart-fill"></i>
                     </div>
                     <img className='' src={props.data.getThumb()} title={props.data.getImgTitle()} />
                 </div>
