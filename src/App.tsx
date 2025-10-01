@@ -7,7 +7,7 @@ import { Outlet } from "react-router"
 export default function App() {
   return (<>
     <MenuBar>
-      <InputSearch />
+      <InputSearch search={(value: string) => console.log('======> ', value)} />
     </MenuBar>
 
     <Main>

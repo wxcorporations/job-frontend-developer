@@ -1,0 +1,182 @@
+{
+    "kind": "youtube#searchListResponse",
+    "etag": "wCj1MSzwvuIHmqV_DdcKdi91dgc",
+    "nextPageToken": "CAUQAA",
+    "regionCode": "BR",
+    "pageInfo": {
+        "totalResults": 13,
+        "resultsPerPage": 5
+    },
+    "items": [
+        {
+            "kind": "youtube#searchResult",
+            "etag": "BxJqaj_rD-PrtnSw89-Gokcn2NI",
+            "id": {
+                "kind": "youtube#video",
+                "videoId": "yuMFUt1XVCA"
+            },
+            "snippet": {
+                "publishedAt": "2022-10-09T12:27:40Z",
+                "channelId": "UCesGAfPJfE-xdHo-DC0ju-g",
+                "title": "CARROS de CORRIDA com HOMEM ARANHA e HERÓIS! Desafio Incrível na Rampa do LAGO - GTA V",
+                "description": "EP 85 - Carros de corrida no desafio de subida na rampa do lago e depois com Helicópteros! Salve nossa playlist com muitos ...",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/yuMFUt1XVCA/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/yuMFUt1XVCA/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/yuMFUt1XVCA/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    }
+                },
+                "channelTitle": "IR GAMES",
+                "liveBroadcastContent": "none",
+                "publishTime": "2022-10-09T12:27:40Z"
+            }
+        },
+        {
+            "kind": "youtube#searchResult",
+            "etag": "gyonZug--DnsFdQVjzGwPwxFgL0",
+            "id": {
+                "kind": "youtube#video",
+                "videoId": "R6H3WxJCtYU"
+            },
+            "snippet": {
+                "publishedAt": "2025-09-29T18:59:50Z",
+                "channelId": "UCklg1LNIaBzLSgQAHjjfIYg",
+                "title": "PACIFICADOR 6ºep, POPÓ x VANDERLEI SILVA e bilheteria DEMON SLAYER – Nerdolive #51",
+                "description": "Hoje vamos falar sobre o 6º episódio de Pacificador, cheio de momentos polêmicos e discussões insanas. Também vamos ...",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/R6H3WxJCtYU/default_live.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/R6H3WxJCtYU/mqdefault_live.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/R6H3WxJCtYU/hqdefault_live.jpg",
+                        "width": 480,
+                        "height": 360
+                    }
+                },
+                "channelTitle": "Canal Tragicômico",
+                "liveBroadcastContent": "live",
+                "publishTime": "2025-09-29T18:59:50Z"
+            }
+        },
+        {
+            "kind": "youtube#searchResult",
+            "etag": "P-D0VI4UeePgElR-JQNGRYJSE9w",
+            "id": {
+                "kind": "youtube#video",
+                "videoId": "SCsKhYzuR3I"
+            },
+            "snippet": {
+                "publishedAt": "2025-09-30T01:27:47Z",
+                "channelId": "UC_OM1tVuFz-5FB1BCUq8xRg",
+                "title": "Ib: eu #mundotorajo #algorithomus #euseiquevaiflopar #edit",
+                "description": "",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/SCsKhYzuR3I/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/SCsKhYzuR3I/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/SCsKhYzuR3I/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    }
+                },
+                "channelTitle": "Bianca Ribeiro",
+                "liveBroadcastContent": "none",
+                "publishTime": "2025-09-30T01:27:47Z"
+            }
+        },
+        {
+            "kind": "youtube#searchResult",
+            "etag": "7Gmjg5LsB3O9z0RLOdArELMHiRI",
+            "id": {
+                "kind": "youtube#video",
+                "videoId": "VDWquS2aYjQ"
+            },
+            "snippet": {
+                "publishedAt": "2025-09-27T23:00:37Z",
+                "channelId": "UCL3v6gmkJUAyoXC0bsOSJrg",
+                "title": "Voce ACREDITA NISSO ?  😲🤔",
+                "description": "",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/VDWquS2aYjQ/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/VDWquS2aYjQ/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/VDWquS2aYjQ/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    }
+                },
+                "channelTitle": "Juuba Jr",
+                "liveBroadcastContent": "none",
+                "publishTime": "2025-09-27T23:00:37Z"
+            }
+        },
+        {
+            "kind": "youtube#searchResult",
+            "etag": "sVv5jyYLSLTNcnuZNVpDF0masQU",
+            "id": {
+                "kind": "youtube#video",
+                "videoId": "gyt3q2J-xaM"
+            },
+            "snippet": {
+                "publishedAt": "2025-09-29T21:19:36Z",
+                "channelId": "UCi_H6UrbGYKfe41Q78c0iRA",
+                "title": "TIKUN HAKLALI | SELICHOT | JORNADA DE YOM KIPUR | DIA 38 | EMUNAH TV",
+                "description": "TIKUN HAKLALI NO SITE: https://sinagogaemunahshlemah.com.br/tikun-haklaki EMUNAH SHLEMAH KIDS: ...",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/gyt3q2J-xaM/default_live.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/gyt3q2J-xaM/mqdefault_live.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/gyt3q2J-xaM/hqdefault_live.jpg",
+                        "width": 480,
+                        "height": 360
+                    }
+                },
+                "channelTitle": "Sinagoga Emunah Sh’lemah",
+                "liveBroadcastContent": "live",
+                "publishTime": "2025-09-29T21:19:36Z"
+            }
+        }
+    ]
+}

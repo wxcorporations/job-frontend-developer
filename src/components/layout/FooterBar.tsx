@@ -1,7 +1,9 @@
-export default function FooterBar() {
+export default function FooterBar(prop: any) {
     return (
         <>
-            <h1>Footer bar</h1>
+            <div className="container">
+                {prop.children}
+            </div>
         </>
     )
 }
