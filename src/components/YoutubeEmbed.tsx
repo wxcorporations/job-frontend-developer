@@ -1,10 +1,10 @@
 import './YoutubeEmbed.scss'
 
-type youtubeArgs = {
+type YoutubeEmbedProps = {
     id: string,
 }
 
-export default function YoutubeEmbed(props: youtubeArgs) {
+export default function YoutubeEmbed(props: YoutubeEmbedProps) {
     const src = `http://www.youtube.com/embed/${props.id}`
     
     return (
