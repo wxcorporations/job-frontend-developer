@@ -22,9 +22,6 @@ export default class DataVideo implements Video {
     }
 
     getTitle() {
-        if (this.data?.snippet?.title.length >= this.TOTAL_CHARS_TITLE) {
-            return this.data?.snippet?.title.substring(0, this.TOTAL_CHARS_TITLE).concat('...')
-        }
         return this.data?.snippet?.title || '';
     }
     getDescription() {
