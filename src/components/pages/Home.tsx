@@ -1,18 +1,21 @@
-import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { setSearch } from '../../../store/videoSlice'
 import SectionPlayer from "../layout/SectionPlayer"
 import InputSearch from '../InputSearch';
+import { useState } from 'react'
 
 import './Home.scss'
 
 export default function Home() {
-    const [search, setSearch] = useState('')
+    const search = useSelector((data:any) => data.video.search)
+    const dispatch = useDispatch()
 
     const initialTemplate = () => {
         return (
             <>
                 <div className='initial-template d-flex flex-column align-items-center justify-content-center'>
                     <img className="mb-3" src="/assets/octocat.png" alt="imagem de um gato com tentaculos de polvo segurando o icone do youtube" width={196} height={196} />
-                    <InputSearch search={(data: string) => (setSearch(data))}></InputSearch>
+                    <InputSearch search={(data: string) => (dispatch(setSearch(data)) )}></InputSearch>
                 </div>
             </>
         )
@@ -21,11 +24,7 @@ export default function Home() {
     const afterSearchTemplate = () => {
         return (
             <>
-                <SectionPlayer
-                    videoId="yuMFUt1XVCA"
-                    title="Nome do video"
-                    description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit ab ea harum odio saepe fuga, nemo accusantium, assumenda officiis ipsam eveniet earum numquam? Aspernatur sunt, quibusdam at quod atque adipisci."
-                />
+                <SectionPlayer />
             </>
         )
     }
