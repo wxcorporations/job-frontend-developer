@@ -1,9 +1,9 @@
 
-
+import './Main.scss'
 export default function Main(props: any) {
     return (
         <>
-            <div className="container">
+            <div className="main container">
                 {props.children}
             </div>
         </>
