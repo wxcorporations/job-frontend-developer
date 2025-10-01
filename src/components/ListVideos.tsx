@@ -1,10 +1,8 @@
-import CardVideo from './CardVideo'
-import './ListVideos.scss'
-
-
 import responseVideos from '../mock/videos.json'
 import DataVideo from '../core/DataVideo'
+import CardVideo from './CardVideo'
 
+import './ListVideos.scss'
 
 
 export default function ListVideos(props: any): React.ReactNode {
@@ -23,7 +21,6 @@ export default function ListVideos(props: any): React.ReactNode {
         )
     })
 
-    // criar component card video
     return (
         <>
             <div className='list-videos'>
