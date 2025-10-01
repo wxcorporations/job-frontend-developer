@@ -1,4 +1,4 @@
-import { ResponseVideo, ResponseSearch } from './types'
+import { ResponseSearch, ResponseVideo } from '../types/Youtube'
 
 export default class Youtube {
     private endpoint: string;

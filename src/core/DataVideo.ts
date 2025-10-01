@@ -1,4 +1,4 @@
-import { ItemSearch } from '../api/types';
+import { ItemSearch } from '../types/Youtube';
 import { Video } from '../interfaces/Video'
 
 export default class DataVideo implements Video {

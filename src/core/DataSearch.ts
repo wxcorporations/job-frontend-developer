@@ -1,4 +1,4 @@
-import { ResponseSearch } from '../api/types';
+import { ResponseSearch } from '../types/Youtube';
 
 export default class DataSearch {
     private data: ResponseSearch | undefined;
