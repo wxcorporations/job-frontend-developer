@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     position: relative;
-    max-width: 480px;
+    max-width: 239px;
 
     &.is-disable {
         opacity: 0.2;
@@ -39,5 +39,11 @@
         & i::before {
             color: #a9a9a9;
         }
+    }
+}
+
+@media screen and (min-width: 375px) {
+    .field-search {
+        max-width: 480px;
     }
 }

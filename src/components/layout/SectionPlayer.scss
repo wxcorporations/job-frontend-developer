@@ -8,6 +8,10 @@
         width: 100%;
         height: auto;
 
+        h1 {
+            font-size: 1.5rem;
+        }
+
         &-infor {
             padding: 16px;
         }
@@ -26,11 +30,13 @@
         padding: 40px 0;
         
         &__embed {
-            width: 65%;
+            width: 100%;
+            max-width: 65%;
         }
 
         &__content {
-            width: 35%;
+            width: 100%;
+            max-width: 35%;
             padding: 0 16px;
         }
     }
