@@ -10,24 +10,34 @@ type DataCard = {
     play?: Function
 }
 
+
+function factoryDataVideo(data: Video) {
+    return {
+        id: data.getVideoId(),
+        title: data.getTitle(),
+        description: data.getDescription(),
+        thumb: data.getThumb(),
+        channel: data.getChannel()
+    }
+}
+
+const TOTAL_CHAR_TITLE = 32
+
 export default function CardVideo(props: DataCard) {
     const [isFavorite, setIsFavorite] = useState(false)
+    const DATA_VIDEO: any = factoryDataVideo(props.data)
+
 
     const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
         event.stopPropagation();
-        props.play && props.play(event.currentTarget.id)
+        props.play && props.play(DATA_VIDEO)
     }
 
     const toggleFavorite = (event: React.MouseEvent<HTMLDivElement>) => {
         event.stopPropagation();
-
         const status = !isFavorite
-        
-        props.handleFavorite && (props.handleFavorite({
-            status,
-            thumb: props.data.getThumb(),
-            id: props.data.getVideoId()
-        }))
+
+        props.handleFavorite && (props.handleFavorite({ status, ...DATA_VIDEO }))
 
         setIsFavorite(status)
     }
@@ -44,7 +54,7 @@ export default function CardVideo(props: DataCard) {
 
                 <div className='card-video__content'>
                     <div className='card-video__content-info'>
-                        <h2 className='title'>{props.data.getTitle()}</h2>
+                        <h2 className='title'>{props.data.getTitle().substring(0, TOTAL_CHAR_TITLE).concat('...')}</h2>
                         <p className='channel'>{props.data.getChannel()}</p>
                     </div>
                 </div>
