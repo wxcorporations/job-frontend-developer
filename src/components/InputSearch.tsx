@@ -1,41 +1,16 @@
-import React, { HtmlHTMLAttributes, KeyboardEvent } from 'react'
-import './InputSearch.scss'
 import { useRef, useEffect } from 'react'
+import './InputSearch.scss'
 
-
-class InputField {
-    el: HTMLInputElement;
-
-    constructor(element: HTMLInputElement) {
-        this.el = element;
-    }
-
-    get value() {
-        return this.el.value
-    }
-
-    clear() {
-        this.el.value = ''
-    }
-
-    block() {
-        this.el.disabled = true
-        this.el.parentElement?.classList.add('is-disable')
-    }
-
-    active() {
-        this.el.disabled = false
-        this.el.parentElement?.classList.remove('is-disable')
-    }
+type ImputSearchProps = {
+    search: Function
 }
 
-
-export default function InputSearch(props: any) {
+export default function InputSearch(props: ImputSearchProps) {
     let input: InputField
-    const search = useRef<HTMLInputElement>(null)
+    const searchElement = useRef<HTMLInputElement>(null)
 
     useEffect(() => {
-        input = new InputField(search.current!)
+        input = new InputField(searchElement.current!)
     }, [])
 
     const validateInput = () => {
@@ -70,11 +45,39 @@ export default function InputSearch(props: any) {
     return (
         <>
             <div className='field-search' >
-                <input tabIndex={1} id="input-search" ref={search} className="field-search__input" placeholder='[ enter ] Para buscar' type="text" onKeyDown={handleKeyEnter} />
+                <input tabIndex={1} id="input-search" ref={searchElement} className="field-search__input" placeholder='[ enter ] Para buscar' type="text" onKeyDown={handleKeyEnter} />
                 <div className="field-search__button" role="button" aria-details='button search' tabIndex={2} onClick={handleClick} onKeyDown={handleKeyEnterButton}>
                     <i className="bi bi-search"></i>
                 </div>
             </div>
         </>
     )
+}
+
+const CSS_DISABLE_CLASS = 'is-disable';
+
+class InputField {
+    el: HTMLInputElement;
+
+    constructor(element: HTMLInputElement) {
+        this.el = element;
+    }
+
+    get value() {
+        return this.el.value
+    }
+
+    clear() {
+        this.el.value = ''
+    }
+
+    block() {
+        this.el.disabled = true
+        this.el.parentElement?.classList.add(CSS_DISABLE_CLASS)
+    }
+
+    active() {
+        this.el.disabled = false
+        this.el.parentElement?.classList.remove(CSS_DISABLE_CLASS)
+    }
 }
