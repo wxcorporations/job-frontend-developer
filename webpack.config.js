@@ -17,12 +17,15 @@ module.exports = {
         filename: '[name].[hash].js',
         clean: true
     },
-    devServer: { 
+    devServer: {
         historyApiFallback: true,
         static: './dist',
         hot: true,
         port: 3000,
-        open: true
+        open: true,
+        static: {
+            directory: path.join(__dirname, 'public'),
+        },
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx']
@@ -46,6 +49,20 @@ module.exports = {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
                 use: 'babel-loader'
+            },
+            {
+                test: /\.(gif|png|jpe?g|svg)$/i,
+                type: 'asset/*',
+                use: [
+                    'file-loader',
+                    {
+                        loader: 'image-webpack-loader',
+                        options: {
+                            bypassOnDebug: true, // webpack@1.x
+                            disable: true, // webpack@2.x and newer
+                        },
+                    },
+                ],
             }
         ]
     },
