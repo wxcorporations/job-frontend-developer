@@ -1,83 +1,63 @@
-import { useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
+
 import './InputSearch.scss'
 
-type ImputSearchProps = {
-    search: Function
-}
+export default function InputSearch(props: { search: Function }) {
+    const [value, setValue] = useState('ddddd')
 
-export default function InputSearch(props: ImputSearchProps) {
-    let input: InputField
-    const searchElement = useRef<HTMLInputElement>(null)
+    const input = useRef<any>(null)
 
-    useEffect(() => {
-        input = new InputField(searchElement.current!)
-    }, [])
+    const updateValue = (event: any) => setValue(event.target.value)
 
-    const validateInput = () => {
-        return !(!props.search || typeof props.search !== 'function')
+
+    const inputClear = () => {
+        input && (input.current.value = '')
     }
 
     const handleClick = () => {
-        if (!validateInput()) return null
-
-        props.search(input.value)
-        input.clear()
+        props.search(value)
+        inputClear()
     }
 
     const handleKeyEnter = (event: any) => {
-        if (!validateInput()) return null
-
         if (event.key === 'Enter') {
-            props.search(input.value)
-            input.clear()
+            props.search(event.target.value)
+            inputClear()
         }
     }
 
     const handleKeyEnterButton = (event: any) => {
-        if (!validateInput()) return null
-
         if (event.key === 'Enter') {
-            props.search(input.value)
-            input.clear()
+            props.search(value)
+            inputClear()
         }
     }
 
     return (
         <>
-            <div className='field-search' >
-                <input tabIndex={1} id="input-search" ref={searchElement} className="field-search__input" placeholder='[ enter ] Para buscar' type="text" onKeyDown={handleKeyEnter} />
-                <div className="field-search__button" role="button" aria-details='button search' tabIndex={2} onClick={handleClick} onKeyDown={handleKeyEnterButton}>
+            <div className="field-search" >
+                <input
+                    ref={input}
+                    type="text"
+                    tabIndex={1}
+                    id="input-search"
+                    className="field-search__input"
+                    placeholder="[ enter ] Para buscar"
+                    onKeyDown={handleKeyEnter}
+                    onBlur={updateValue}
+                />
+
+                <div
+                    tabIndex={2}
+                    role="button"
+                    aria-details="button search"
+                    className="field-search__button"
+                    onKeyDown={handleKeyEnterButton}
+                    onClick={handleClick}
+                >
                     <i className="bi bi-search"></i>
                 </div>
             </div>
         </>
     )
-}
-
-const CSS_DISABLE_CLASS = 'is-disable';
-
-class InputField {
-    el: HTMLInputElement;
-
-    constructor(element: HTMLInputElement) {
-        this.el = element;
-    }
-
-    get value() {
-        return this.el.value
-    }
-
-    clear() {
-        this.el.value = ''
-    }
-
-    block() {
-        this.el.disabled = true
-        this.el.parentElement?.classList.add(CSS_DISABLE_CLASS)
-    }
-
-    active() {
-        this.el.disabled = false
-        this.el.parentElement?.classList.remove(CSS_DISABLE_CLASS)
-    }
 }
