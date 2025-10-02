@@ -1,11 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { ItemSearch } from '../src/types/Youtube';
+
 
 const videoSlice = createSlice({
   name: 'video',
   initialState: {
     play: '',
     search: '',
-    favorites: [] as any
+    favorites: [] as any,
+    videos: [] as ItemSearch[]
   },
   reducers: {
     play: (state, action) => { state.play = action.payload },
@@ -15,9 +18,10 @@ const videoSlice = createSlice({
       state.favorites = state.favorites.filter((data: any) => {
         return data.id !== action.payload.id
       })
-    }
+    },
+    updateVideos: (state, action) => { state.videos = action.payload }
   }
 });
 
 export default videoSlice.reducer;
-export const { play, setSearch, addFavorite, removeFavorite } = videoSlice.actions;
+export const { play, setSearch, addFavorite, removeFavorite, updateVideos } = videoSlice.actions;
