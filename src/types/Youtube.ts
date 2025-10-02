@@ -70,14 +70,14 @@ export type ItemSearch = {
         "videoId": string
     },
     "snippet": {
-        "publishedAt": Date|string,
+        "publishedAt": Date | string,
         "channelId": string,
         "title": string,
         "description": string,
         "thumbnails": thumbnails
         "channelTitle": string,
         "liveBroadcastContent": string,
-        "publishTime": Date|string
+        "publishTime": Date | string
     }
 }
 
@@ -91,4 +91,10 @@ export type ResponseSearch = {
         "resultsPerPage": number
     },
     "items": ItemSearch[]
+}
+
+export type ResponseSearchError = {
+    error: true,
+    message: string,
+    errors?: object[]
 }
