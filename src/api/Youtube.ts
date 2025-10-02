@@ -1,4 +1,13 @@
-import { ResponseSearch, ResponseVideo } from '../types/Youtube'
+import { ResponseSearch, ResponseSearchError, ResponseVideo } from '../types/Youtube'
+
+
+function setYoutubeRequestError(message: string, errors?: object[]): ResponseSearchError {
+    return {
+        error: true,
+        message: message || '',
+        errors: errors || []
+    }
+}
 
 export default class Youtube {
     private endpoint: string;
@@ -21,15 +30,20 @@ export default class Youtube {
         return `${this.endpoint}${recurso}?${qs.toString()}`
     }
 
-    async search(value: string, options?: any): Promise<ResponseSearch | unknown> {
+    async search(value: string, options?: any): Promise<ResponseSearch | ResponseSearchError> {
         try {
             const url = this.composeURL('search', { q: value, part: 'snippet' })
             const result = await fetch(url, { ...options })
+
+            if (!result.ok) {
+                return setYoutubeRequestError('Erro na requisição')
+            }
+
             const data = await result.json()
             return data
 
         } catch (error) {
-            return error
+            return setYoutubeRequestError('Erro desconhecido!')
         }
     }
 
