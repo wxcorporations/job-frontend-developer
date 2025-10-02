@@ -13,7 +13,7 @@ const videoSlice = createSlice({
     addFavorite: (state, action) => { state.favorites.push(action.payload) },
     removeFavorite: (state, action) => {
       state.favorites = state.favorites.filter((data: any) => {
-        return data.id === action.payload.id
+        return data.id !== action.payload.id
       })
     }
   }
