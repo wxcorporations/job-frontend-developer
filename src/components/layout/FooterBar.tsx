@@ -1,5 +1,4 @@
 import './FooterBar.scss'
-import DataVideo from '../../core/DataVideo';
 export default function FooterBar(prop: any) {
     return (
         <>
