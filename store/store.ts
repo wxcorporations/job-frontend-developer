@@ -1,8 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import videoReducer from './videoSlice';
+import videoSlice from './videoSlice';
+import favoritesSlice from './favoritesSlice';
+import searhSlice from './searchSlice';
+
 
 export const store = configureStore({
   reducer: {
-    video: videoReducer
+    video: videoSlice,
+    favorites: favoritesSlice,
+    search: searhSlice
   }
 });
