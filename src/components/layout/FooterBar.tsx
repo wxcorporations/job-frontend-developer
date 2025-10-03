@@ -1,19 +1,22 @@
+import './FooterBar.scss'
+import DataVideo from '../../core/DataVideo';
 export default function FooterBar(prop: any) {
     return (
         <>
+            <div className="footer-bar">
+                <div className="container">
+                    <div className="d-flex mb-2 p-3">
+                        <a
+                            className="w-100 text-center font-weight-lighter text-decoration-none text-secondary"
+                            href="https://www.linkedin.com/in/fernando-barros-dev/"
+                            target="_blank"
+                        >
+                            Fernando Barros
+                        </a>
+                    </div>
 
-            <div className="container">
-                <div className="d-flex mb-2 p-3">
-                    <a 
-                        className="w-100 text-center font-weight-lighter text-decoration-none text-secondary" 
-                        href="https://www.linkedin.com/in/fernando-barros-dev/" 
-                        target="_blank"
-                    >
-                        Fernando Barros
-                    </a>
+                    {prop.children}
                 </div>
-
-                {prop.children}
             </div>
         </>
     )

@@ -1,45 +1,27 @@
-import { useMemo, useState } from 'react'
 import YoutubeEmbed from '../YoutubeEmbed'
 import ListVideos from '../ListVideos'
-import { useSelector } from 'react-redux'
+
+import useVideo from '../../hooks/useVideo'
 
 import './SectionPlayer.scss'
 
 export default function SectionPlayer(props: any) {
-    const [video, setVideo] = useState(props.videoId)
-
-    const description = useSelector((state: any) => state.video.play.description)
-    const channel = useSelector((state: any) => state.video.play.channel)
-    const title = useSelector((state: any) => state.video.play.title)
-    const id = useSelector((state: any) => state.video.play.id)
-
-    const embedYoutubeMemo = useMemo(() => {
-        return (
-            <>
-                <YoutubeEmbed id={video} />
-
-                <div className='p-2'>
-                    <h1 className='mt-2'>{title}</h1>
-                    <p>{description}</p>
-                </div>
-            </>
-        )
-    }, [video, title, description]);
+    const { player, list } = useVideo()
 
     return (
         <>
             <div className="section-player">
                 <div className="section-player__embed">
-                    <YoutubeEmbed id={id} />
+                    <YoutubeEmbed id={player?.id || list[0].id} />
 
                     <div className='p-2'>
-                        <h1 className='mt-2'>{title}</h1>
-                        <p className='mb-2'>{channel}</p>
-                        <p className='text-secondary'>{description}</p>
+                        <h1 className='mt-2'>{player?.title || list[0].title }</h1>
+                        <p className='mb-2'>{player?.channel || list[0].channel }</p>
+                        <p className='text-secondary'>{player?.description || list[0].description }</p>
                     </div>
                 </div>
                 <div className="section-player__content">
-                    <ListVideos />
+                    <ListVideos items={list || []} />
                 </div>
             </div>
         </>

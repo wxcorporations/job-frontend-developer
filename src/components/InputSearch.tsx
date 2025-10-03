@@ -3,8 +3,7 @@ import { useState, useRef } from 'react'
 import './InputSearch.scss'
 
 export default function InputSearch(props: { search: Function }) {
-    const [value, setValue] = useState('ddddd')
-
+    const [value, setValue] = useState('')
     const input = useRef<any>(null)
 
     const updateValue = (event: any) => setValue(event.target.value)

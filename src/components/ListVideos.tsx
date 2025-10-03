@@ -1,27 +1,25 @@
-import responseVideos from '../mock/videos.json'
-import DataVideo from '../core/DataVideo'
 import CardVideo from './CardVideo'
-import { useDispatch, useSelector } from 'react-redux'
-import { addFavorite, removeFavorite, play } from '../../store/videoSlice'
+import useFavorites from '../hooks/useFavorites'
+import useVideo from '../hooks/useVideo'
 
 import './ListVideos.scss'
 
-export default function ListVideos(props: any): React.ReactNode {
-    const dispath = useDispatch()
+export default function ListVideos(props: { items: Array<any> }): React.ReactNode {
+    const { addFavorite,removeFavorite } = useFavorites()
+    const { setPlayer } = useVideo()
 
-    const handleFavorite = (data:any) => {
-        dispath(data.status ? addFavorite(data) : removeFavorite(data))
+    const toggleFavorite = (data: any) => {
+        data.status ? addFavorite(data) : removeFavorite(data)
     }
 
-    const cards = responseVideos.items
-        .map((data) => new DataVideo(data))
-        .map((data, index) => {
+    const cards = props.items
+        .map((data:any, index:number) => {
             return (
                 <>
                     <CardVideo
                         key={index}
-                        play={(data: any) => dispath(play(data))}
-                        handleFavorite={handleFavorite}
+                        play={setPlayer}
+                        handleFavorite={toggleFavorite}
                         data={data}
                     />
                 </>

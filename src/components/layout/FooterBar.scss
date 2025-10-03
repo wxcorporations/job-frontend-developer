@@ -1,0 +1,13 @@
+.footer-bar {
+    background-color: white;
+}
+
+
+
+@media screen and (min-width: 768px) {
+    .footer-bar {
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+    }
+}
