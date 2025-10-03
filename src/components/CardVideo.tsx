@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Heart, HeartFill } from 'react-bootstrap-icons'
 
 import './CardVideo.scss'
 
@@ -31,7 +32,7 @@ export default function CardVideo(props: {
             <div role="card" id={props.data.id} className='card-video' onClick={handleClick}>
                 <div className='card-video__img'>
                     <div className={`card-video__img-action ${isFavorite ? 'is-active' : ''}`} onClick={toggleFavorite} >
-                        <i className="bi bi-heart-fill"></i>
+                        { isFavorite ? <HeartFill className='icon'/> : <Heart className='icon'/> }
                     </div>
                     <img className='' src={props.data.thumbnail} title={props.data.title} />
                 </div>

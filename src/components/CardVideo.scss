@@ -22,7 +22,7 @@
             align-items: center;
             z-index: 2;
 
-            & i::before {
+            & .icon {
                 -webkit-text-stroke: 4px #f85555;
                 opacity: 0.9;
                 color: white;
@@ -30,7 +30,7 @@
             }
 
             &.is-active {
-                i::before {
+                .icon {
                     color: red;
                 }
             }

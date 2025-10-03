@@ -3,6 +3,7 @@ const Dotenv = require('dotenv-webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 
 module.exports = {
@@ -70,5 +71,10 @@ module.exports = {
         new Dotenv(),
         new HtmlWebpackPlugin({ template: './src/index.html' }),
         new ReactRefreshWebpackPlugin(),
+         new BundleAnalyzerPlugin({
+            analyzerMode: 'static',
+            reportFilename: 'report.html',
+            openAnalyzer: false,
+        })
     ]
 };

@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react'
+import { Search } from 'react-bootstrap-icons'
 
 import './InputSearch.scss'
 
@@ -7,7 +8,6 @@ export default function InputSearch(props: { search: Function }) {
     const input = useRef<any>(null)
 
     const updateValue = (event: any) => setValue(event.target.value)
-
 
     const inputClear = () => {
         input && (input.current.value = '')
@@ -54,7 +54,7 @@ export default function InputSearch(props: { search: Function }) {
                     onKeyDown={handleKeyEnterButton}
                     onClick={handleClick}
                 >
-                    <i className="bi bi-search"></i>
+                    <Search className='icon' />
                 </div>
             </div>
         </>
