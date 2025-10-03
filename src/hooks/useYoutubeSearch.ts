@@ -13,13 +13,13 @@ export default function useYoutubeSearch() {
     const { updateVideos } = useVideo()
 
     const searchVideos = async (query: string) => {
-        // if (!validateQuery(query)) return false
-        // const res = await youtubeApi.search(query)
+        if (!validateQuery(query)) return false
+        const res = await youtubeApi.search(query)
 
-        // if ('error' in res) throw res
+        if ('error' in res) throw res
 
         updateSearch(query)
-        updateVideos(videosMock.items as [])
+        updateVideos(res.items as [])
     }
 
     return {
