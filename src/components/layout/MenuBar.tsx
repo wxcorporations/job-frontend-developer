@@ -1,7 +1,7 @@
-import InputSearch from "../InputSearch"
-import { useSelector, useDispatch } from 'react-redux'
 import React from "react"
-import { setSearch } from '../../../store/videoSlice'
+import InputSearch from "../InputSearch"
+
+import useVideo from "../../hooks/useVideo"
 
 import './MenuBar.scss'
 
@@ -10,8 +10,8 @@ type props = {
 }
 
 export default function MenuBar(props: props) {
-    const dispatch = useDispatch()
-    const isActive = useSelector((state: any) => state.video.search)
+    const { setPlayer, list } = useVideo()
+    const isActive = list.length > 0
 
     return (
         <>
@@ -22,7 +22,7 @@ export default function MenuBar(props: props) {
                         <span className="menu-bar__icon-label">OCTO-PLAY</span>
                     </div>
                     <div className="menu-bar__content">
-                        {isActive && <InputSearch search={(value: string) => dispatch(setSearch(value))} />}
+                        {isActive && <InputSearch search={setPlayer} />}
                     </div>
                 </div>
             </header>
