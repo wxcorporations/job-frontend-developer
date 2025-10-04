@@ -21,7 +21,8 @@ export default function SectionPlayer(props: any) {
         <>
             <div className="section-player">
                 <div className="section-player__embed">
-                    <YoutubeEmbed id={player?.id || list[0].id} />
+                    <span data-anchor="player"></span>
+                    <YoutubeEmbed  id={player?.id || list[0].id} />
 
                     <div className='p-2'>
                         <h1 className='mt-2'>{player?.title || list[0].title}</h1>

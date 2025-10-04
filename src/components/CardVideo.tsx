@@ -8,13 +8,18 @@ const TOTAL_CHAR_TITLE = 32
 export default function CardVideo(props: {
     data: any,
     handleFavorite?: Function,
-    play?: Function
+    play?: Function,
 }) {
-    const [isFavorite, setIsFavorite] = useState(false)
-
+    const [isFavorite, setIsFavorite] = useState(props.data.status || false)
 
     const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
         event.stopPropagation();
+
+        setTimeout(() => {
+            const elementAnchor = document.querySelector('[data-anchor="player"]');
+            elementAnchor && elementAnchor?.scrollIntoView(true)
+        }, 500)
+
         props.play && props.play(props.data)
     }
 
@@ -22,7 +27,7 @@ export default function CardVideo(props: {
         event.stopPropagation();
         const status = !isFavorite
 
-        props.handleFavorite && (props.handleFavorite({ status, ...props.data }))
+        props.handleFavorite && (props.handleFavorite({ ...props.data, status }))
 
         setIsFavorite(status)
     }
@@ -32,7 +37,7 @@ export default function CardVideo(props: {
             <div role="card" id={props.data.id} className='card-video' onClick={handleClick}>
                 <div className='card-video__img'>
                     <div className={`card-video__img-action ${isFavorite ? 'is-active' : ''}`} onClick={toggleFavorite} >
-                        { isFavorite ? <HeartFill className='icon'/> : <Heart className='icon'/> }
+                        {isFavorite ? <HeartFill className='icon' /> : <Heart className='icon' />}
                     </div>
                     <img className='' src={props.data.thumbnail} title={props.data.title} />
                 </div>
