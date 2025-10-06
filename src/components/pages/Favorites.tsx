@@ -22,7 +22,11 @@ export default function Favorites(props: any) {
     const cards = useMemo(() => {
         return list.length
             ? list.map((data: any, index: number) => {
-                return <CardVideo key={`card-${index}`} data={data} handleFavorite={toggleFavorite} />
+                return <CardVideo
+                    data={data}
+                    key={`card-${index}`}
+                    handleFavorite={toggleFavorite}
+                />
             })
             : []
 
@@ -33,7 +37,7 @@ export default function Favorites(props: any) {
             <>
                 <div className="w-100 vh-75 d-flex flex-column justify-content-center align-items-center">
                     <img
-                        src="/assets/octocat-zero.png"
+                        src="/assets/octocat-zero-otmized.png"
                         alt="icon do octocat triste, por não ter favoritos"
                         width={256}
                         height={256}

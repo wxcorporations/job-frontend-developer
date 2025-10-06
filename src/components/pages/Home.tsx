@@ -36,7 +36,14 @@ export default function Home() {
         return (
             <>
                 <div className='initial-template d-flex flex-column align-items-center justify-content-center'>
-                    <img className="mb-3" src="/assets/octocat.png" alt="imagem de um gato com tentaculos de polvo segurando o icone do youtube" width={196} height={196} />
+                    <img
+                        className="mb-3"
+                        src="/assets/octocat-otimized.png"
+                        alt="imagem de um gato com tentaculos de polvo segurando o icone do youtube"
+                        width={196}
+                        height={196}
+                    />
+
                     <InputSearch search={handleSearch}></InputSearch>
                 </div>
             </>

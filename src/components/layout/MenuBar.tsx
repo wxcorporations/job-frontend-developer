@@ -24,7 +24,7 @@ export default function MenuBar(props: {
                         <a href="/" aria-label="link home" className="text-decoration-none">
                             <img
                                 className="menu-bar__icon-img"
-                                src="/assets/octocat.png"
+                                src="/assets/octocat-icon.png"
                                 alt="imagem de um gato com tentaculos de polvo segurando o icone do youtube"
                                 width={30}
                                 height={30}
