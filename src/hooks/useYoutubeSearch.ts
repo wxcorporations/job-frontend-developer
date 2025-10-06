@@ -1,6 +1,6 @@
 import mock from '../mock/videos.json'
 import useStoreVideo from './useStoreVideo';
-import useSearch from './useSearch';
+import useStoreSearch from './useStoreSearch';
 
 import Youtube from '../api/Youtube';
 const youtubeApi = new Youtube()
@@ -8,7 +8,7 @@ const youtubeApi = new Youtube()
 const validateQuery = (value: string) => value.length !== 0 && value.length < 120
 
 export default function useYoutubeSearch() {
-    const { updateSearch} = useSearch()
+    const { updateSearch} = useStoreSearch()
     const { updateVideos } = useStoreVideo()
 
     const searchVideos = async (query: string) => {
