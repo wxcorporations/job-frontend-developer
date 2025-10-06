@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { setPlayer, updateVideos } from '../../store/videoSlice'
+import { setPlayer, updateVideos, resetPlayer, resetVideos } from '../../store/videoSlice'
 
 
 function factoryDataVideo(data:any) {
@@ -12,7 +12,7 @@ function factoryDataVideo(data:any) {
     }
 }
 
-export default function useVideo() {
+export default function useStoreVideo() {
     const dispatch = useDispatch()
 
     const list = useSelector((store:any) => store.video.list)
@@ -21,6 +21,8 @@ export default function useVideo() {
     return {
         setPlayer: (data: any) => { dispatch(setPlayer(data)) },
         updateVideos: (list: []) => { dispatch(updateVideos(list.map((data) => factoryDataVideo(data)))) },
+        resetPlayer: () => { dispatch(resetPlayer()) },
+        resetVideos: () => { dispatch(resetVideos()) },
         player,
         list
     }

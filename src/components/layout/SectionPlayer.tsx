@@ -1,7 +1,7 @@
 import YoutubeEmbed from '../YoutubeEmbed'
 import ListVideos from '../ListVideos'
 
-import useVideo from '../../hooks/useVideo'
+import useStoreVideo from '../../hooks/useStoreVideo'
 import useFavorites from '../../hooks/useFavorites'
 
 import './SectionPlayer.scss'
@@ -10,7 +10,7 @@ import './SectionPlayer.scss'
 
 export default function SectionPlayer(props: any) {
     const { list: listFavorites } = useFavorites()
-    const { player, list } = useVideo()
+    const { player, list } = useStoreVideo()
 
     const listUpdated = list.map((video: any) => {
             const favorite = listFavorites.find((fav: any) => fav.id === video.id)

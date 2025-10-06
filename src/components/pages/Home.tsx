@@ -5,14 +5,14 @@ import InputSearch from '../InputSearch';
 
 import useYoutubeSearch from '../../hooks/useYoutubeSearch';
 import useStoreMenuBar from '../../hooks/useStoreMenuBar';
-import useVideo from '../../hooks/useVideo';
+import useStoreVideo from '../../hooks/useStoreVideo';
 
 import './Home.scss'
 
 export default function Home() {
     const [ initial, setInitial] = useState(true)
     const { searchVideos } = useYoutubeSearch()
-    const { resetPlayer, resetVideos } = useVideo()
+    const { resetPlayer, resetVideos } = useStoreVideo()
     const { switchSearch } = useStoreMenuBar()
 
     useEffect(() => {
