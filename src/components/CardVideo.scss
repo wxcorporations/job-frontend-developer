@@ -59,7 +59,12 @@
         max-width: 400px;
 
         &__img {
-            width: unset;
+            width: 195px;
+            height: 110px;
+            background: black;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
 
             & img {
                 width: auto;
