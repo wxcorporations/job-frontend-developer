@@ -1,6 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import videoSlice from './videoSlice';
 import favoritesSlice from './favoritesSlice';
+import menuBarSlice from './menuBarSlice';
 import searhSlice from './searchSlice';
 
 
@@ -11,7 +12,8 @@ import storage from 'redux-persist/lib/storage';
 const reducers = combineReducers({
   video: videoSlice,
   favorites: favoritesSlice,
-  search: searhSlice
+  search: searhSlice,
+  menu: menuBarSlice
 })
 
 const persistConfig = {
