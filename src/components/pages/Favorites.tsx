@@ -1,14 +1,14 @@
 import { useEffect, useMemo } from "react";
 
 import useStoreMenuBar from "../../hooks/useStoreMenuBar";
-import useFavorites from "../../hooks/useFavorites";
+import useStoreFavorites from "../../hooks/useStoreFavorites";
 
 import CardVideo from "../CardVideo";
 
 
 export default function Favorites(props: any) {
     const { switchSearch } = useStoreMenuBar()
-    const { list, addFavorite, removeFavorite } = useFavorites()
+    const { list, addFavorite, removeFavorite } = useStoreFavorites()
 
     useEffect(() => {
         switchSearch(false)

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { addFavorite, removeFavorite } from '../../store/favoritesSlice'
 
-export default function useFavorites() {
+export default function useStoreFavorites() {
     const dispatch = useDispatch()
 
     const list = useSelector((store:any) => store.favorites.items)

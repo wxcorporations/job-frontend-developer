@@ -3,7 +3,7 @@ import InputSearch from "../InputSearch"
 
 import { HeartFill } from "react-bootstrap-icons"
 
-import useFavorites from "../../hooks/useFavorites"
+import useStoreFavorites from "../../hooks/useStoreFavorites"
 import useStoreMenuBar from "../../hooks/useStoreMenuBar"
 import useYoutubeSearch from "../../hooks/useYoutubeSearch"
 
@@ -12,7 +12,7 @@ import './MenuBar.scss'
 export default function MenuBar(props: {
     children?: React.ReactNode
 }) {
-    const { list: listFavorites } = useFavorites()
+    const { list: listFavorites } = useStoreFavorites()
     const { isActiveSearch } = useStoreMenuBar()
     const { searchVideos } = useYoutubeSearch()
 

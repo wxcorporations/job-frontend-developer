@@ -2,14 +2,14 @@ import YoutubeEmbed from '../YoutubeEmbed'
 import ListVideos from '../ListVideos'
 
 import useStoreVideo from '../../hooks/useStoreVideo'
-import useFavorites from '../../hooks/useFavorites'
+import useStoreFavorites from '../../hooks/useStoreFavorites'
 
 import './SectionPlayer.scss'
 
 
 
 export default function SectionPlayer(props: any) {
-    const { list: listFavorites } = useFavorites()
+    const { list: listFavorites } = useStoreFavorites()
     const { player, list } = useStoreVideo()
 
     const listUpdated = list.map((video: any) => {

@@ -1,11 +1,11 @@
 import CardVideo from './CardVideo'
-import useFavorites from '../hooks/useFavorites'
+import useStoreFavorites from '../hooks/useStoreFavorites'
 import useStoreVideo from '../hooks/useStoreVideo'
 
 import './ListVideos.scss'
 
 export default function ListVideos(props: { items: Array<any> }): React.ReactNode {
-    const { addFavorite, removeFavorite } = useFavorites()
+    const { addFavorite, removeFavorite } = useStoreFavorites()
     const { setPlayer } = useStoreVideo()
 
     const toggleFavorite = (data: any) => {
