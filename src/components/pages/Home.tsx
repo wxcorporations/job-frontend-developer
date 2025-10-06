@@ -1,21 +1,31 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import SectionPlayer from "../layout/SectionPlayer"
 import InputSearch from '../InputSearch';
 
 import useYoutubeSearch from '../../hooks/useYoutubeSearch';
-import Youtube from '../../api/Youtube';
+import useStoreMenuBar from '../../hooks/useStoreMenuBar';
+import useVideo from '../../hooks/useVideo';
 
 import './Home.scss'
 
 export default function Home() {
-    const [initial, setInitial] = useState(true)
+    const [ initial, setInitial] = useState(true)
     const { searchVideos } = useYoutubeSearch()
+    const { resetPlayer, resetVideos } = useVideo()
+    const { switchSearch } = useStoreMenuBar()
+
+    useEffect(() => {
+        resetPlayer()
+        resetVideos()
+        switchSearch(false)
+    }, [])
 
     const handleSearch = async (query:string) => {
         try {
             await searchVideos(query)
             setInitial(false)
+            if (initial) switchSearch(true)
             
         } catch (error) {
             console.error(error)
