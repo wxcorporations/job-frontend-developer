@@ -1,3 +1,4 @@
+const { readFileSync } = require('fs')
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
 
@@ -37,14 +38,22 @@ module.exports = {
     },
     devServer: {
         historyApiFallback: true,
-        static: './dist',
-        host: '0.0.0.0',
-        allowedHosts: 'all',
-        hot: true,
+        host: 'octoplay.com',
         port: 3000,
+        allowedHosts: [
+            '.octoplay.com'
+        ],
+        server: {
+            type: 'https',
+            options: {
+                key: readFileSync(path.resolve(__dirname, './key/octoplay.com+3-key.pem')),
+                cert: readFileSync(path.resolve(__dirname, './key/octoplay.com+3.pem')),
+            }
+        },
+        hot: true,
         open: true,
         static: {
-            directory: path.join(__dirname, 'public'),
+            directory: path.join(__dirname, 'public')
         },
     },
     resolve: {
