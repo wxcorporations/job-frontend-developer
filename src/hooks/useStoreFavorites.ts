@@ -13,8 +13,6 @@ export default function useStoreFavorites() {
     return {
         addFavorite: (data: any) => { 
             if (hasDuplicate(data)) return 
-
-            console.log('userFavorite add => ', data)
             dispatch(addFavorite(data)) 
         },
         removeFavorite: (id: string) => { dispatch(removeFavorite(id)) },
