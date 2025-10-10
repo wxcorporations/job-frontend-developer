@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useMemo } from "react";
 
 import useStoreMenuBar from "../../hooks/useStoreMenuBar";
@@ -52,6 +53,7 @@ export default function Favorites(props: any) {
 
     return (
         <>
+            <h1 className="ms-2 mb-3 text-secondary">Favoritos</h1>
             {cards.length ? cards : templateFavoriteNone()}
         </>
     )

@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import { Search } from 'react-bootstrap-icons'
 
 import './InputSearch.scss'
@@ -41,7 +41,7 @@ export default function InputSearch(props: { search: Function }) {
                     tabIndex={1}
                     id="input-search"
                     className="field-search__input"
-                    placeholder="[ enter ] Para buscar"
+                    placeholder="buscar"
                     onKeyDown={handleKeyEnter}
                     onBlur={updateValue}
                 />
@@ -49,7 +49,6 @@ export default function InputSearch(props: { search: Function }) {
                 <div
                     tabIndex={2}
                     role="button"
-                    aria-details="button search"
                     className="field-search__button"
                     onKeyDown={handleKeyEnterButton}
                     onClick={handleClick}

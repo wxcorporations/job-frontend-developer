@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { Heart, HeartFill } from 'react-bootstrap-icons'
 
 import './CardVideo.scss'
@@ -10,7 +10,12 @@ export default function CardVideo(props: {
     handleFavorite?: Function,
     play?: Function,
 }) {
-    const [isFavorite, setIsFavorite] = useState(props.data.status || false)
+    const [isFavorite, setIsFavorite] = useState(false)
+
+    useLayoutEffect(() => {
+        setIsFavorite(props?.data?.status || false)
+    }, [props.data.status])
+
 
     const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
         event.stopPropagation();
@@ -32,9 +37,13 @@ export default function CardVideo(props: {
         setIsFavorite(status)
     }
 
+    const getTitle = () => {
+        return props.data.title.substring(0, TOTAL_CHAR_TITLE).concat('...')
+    }
+
     return (
         <>
-            <div role="card" id={props.data.id} className='card-video' onClick={handleClick}>
+            <div aria-label='card' id={props.data.id} className='card-video' onClick={handleClick}>
                 <div className='card-video__img'>
                     <div className={`card-video__img-action ${isFavorite ? 'is-active' : ''}`} onClick={toggleFavorite} >
                         {isFavorite ? <HeartFill className='icon' /> : <Heart className='icon' />}
@@ -44,7 +53,7 @@ export default function CardVideo(props: {
 
                 <div className='card-video__content'>
                     <div className='card-video__content-info'>
-                        <h2 className='title'>{props.data.title.substring(0, TOTAL_CHAR_TITLE).concat('...')}</h2>
+                        <h2 className='title'>{getTitle()}</h2>
                         <p className='channel'>{props.data.channel}</p>
                     </div>
                 </div>

@@ -1,3 +1,5 @@
+import React from 'react'
+
 import './YoutubeEmbed.scss'
 
 type YoutubeEmbedProps = {
@@ -5,7 +7,7 @@ type YoutubeEmbedProps = {
 }
 
 export default function YoutubeEmbed(props: YoutubeEmbedProps) {
-    const src = `http://www.youtube.com/embed/${props.id}`
+    const src = `https://www.youtube.com/embed/${props.id}`
     
     return (
         <>
