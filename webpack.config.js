@@ -8,12 +8,21 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
+const { PurgeCSSPlugin } = require('purgecss-webpack-plugin');
+const glob = require('glob');
+
 module.exports = {
     entry: {
         app: './index.tsx',
     },
-    // mode: 'development',
-    mode: 'production',
+    mode: 'development',
+    // mode: 'production',
+    devtool: 'source-map',
+    performance: {
+        hints: false,
+        maxAssetSize: 50000,
+        maxEntrypointSize: 50000,
+    },
     optimization: {
         concatenateModules: true,
         removeAvailableModules: true,
@@ -41,7 +50,9 @@ module.exports = {
         host: 'octoplay.com',
         port: 3000,
         allowedHosts: [
-            '.octoplay.com'
+            '.octoplay.com',
+            '.ngrok-free.app',
+            '.lhr.life'
         ],
         server: {
             type: 'https',
@@ -79,21 +90,22 @@ module.exports = {
                 exclude: /node_modules/,
                 use: 'babel-loader'
             },
-            {
-                test: /\.(gif|png|jpe?g|svg)$/i,
-                type: 'asset/*',
-                exclude: /node_modules/,
-                use: [
-                    'file-loader',
-                    {
-                        loader: 'image-webpack-loader',
-                        options: {
-                            bypassOnDebug: true,
-                            disable: true,
-                        },
-                    },
-                ],
-            }
+
+            // {
+            //     test: /\.(gif|png|jpe?g|svg)$/i,
+            //     type: 'asset/*',
+            //     exclude: /node_modules/,
+            //     use: [
+            //         'file-loader',
+            //         {
+            //             loader: 'image-webpack-loader',
+            //             options: {
+            //                 bypassOnDebug: true,
+            //                 disable: true,
+            //             },
+            //         },
+            //     ],
+            // }
         ]
     },
     plugins: [
@@ -101,6 +113,9 @@ module.exports = {
         new HtmlWebpackPlugin({ template: './src/index.html' }),
         new ReactRefreshWebpackPlugin(),
         new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
+        new PurgeCSSPlugin({
+            paths: glob.sync(`${path.join(__dirname, 'src')}/**/*`, { nodir: true }),
+        }),
         new BundleAnalyzerPlugin({
             analyzerMode: 'static',
             reportFilename: 'report.html',

@@ -12,7 +12,7 @@ import Home from "./src/components/pages/Home";
 import PageTop from "./src/components/layout/PageTop";
 import App from "./src/App";
 
-import './style.scss'
+import './src/sass/index.scss'
 
 const pageTop = PageTop()
 pageTop.init()
@@ -33,11 +33,3 @@ root.render(
         </PersistGate>
     </Provider>
 );
-
-
-// Unused devDependencies
-// * @babel/preset-env
-// * @babel/preset-react
-// * @babel/preset-typescript
-// * @typescript-eslint/parser
-// * webpack-cli
