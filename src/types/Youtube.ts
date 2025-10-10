@@ -5,7 +5,7 @@ type thumbnailValues = {
     height: number
 }
 
-type thumbnails = {
+export type thumbnails = {
     "default"?: thumbnailValues,
     "medium"?: thumbnailValues,
     "high"?: thumbnailValues,
@@ -61,8 +61,7 @@ export type ResponseVideo = {
     }
 }
 
-
-export type ItemSearch = {
+export type VideoItemResponse = {
     "kind": string,
     "etag": string,
     "id": {
@@ -90,7 +89,7 @@ export type ResponseSearch = {
         "totalResults": number,
         "resultsPerPage": number
     },
-    "items": ItemSearch[]
+    "items": VideoItemResponse[]
 }
 
 export type ResponseSearchError = {

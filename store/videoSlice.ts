@@ -1,15 +1,20 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { videoStore } from "../src/core/Video";
+
+export type initStateVideo = {
+    list: videoStore[] | [],
+    player: videoStore | object
+}
+
+const initialState: initStateVideo = { list: [], player: {}}
 
 const videoSlice = createSlice({
     name: 'video',
-    initialState: {
-        list: [] as Array<any>,
-        player: {},
-    },
+    initialState,
     reducers: {
-        setPlayer: (state, action) => { state.player = action.payload },
+        setPlayer: (state, action: PayloadAction<videoStore>) => { state.player = action.payload },
         resetPlayer: (state) => { state.player = {} },
-        updateVideos: (state, action) => { state.list = action.payload },
+        updateVideos: (state, action: PayloadAction<videoStore[]>) => { state.list = action.payload },
         resetVideos: (state) => { state.list = [] },
     }
 })
