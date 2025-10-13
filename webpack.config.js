@@ -57,8 +57,8 @@ module.exports = {
         server: {
             type: 'https',
             options: {
-                key: readFileSync(path.resolve(__dirname, './key/octoplay.com+3-key.pem')),
-                cert: readFileSync(path.resolve(__dirname, './key/octoplay.com+3.pem')),
+                key: readFileSync(path.resolve(__dirname, './.key/octoplay.com+3-key.pem')),
+                cert: readFileSync(path.resolve(__dirname, './.key/octoplay.com+3.pem')),
             }
         },
         hot: true,
@@ -90,22 +90,6 @@ module.exports = {
                 exclude: /node_modules/,
                 use: 'babel-loader'
             },
-
-            // {
-            //     test: /\.(gif|png|jpe?g|svg)$/i,
-            //     type: 'asset/*',
-            //     exclude: /node_modules/,
-            //     use: [
-            //         'file-loader',
-            //         {
-            //             loader: 'image-webpack-loader',
-            //             options: {
-            //                 bypassOnDebug: true,
-            //                 disable: true,
-            //             },
-            //         },
-            //     ],
-            // }
         ]
     },
     plugins: [

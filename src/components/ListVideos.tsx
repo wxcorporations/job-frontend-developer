@@ -1,3 +1,4 @@
+import React from 'react'
 import CardVideo from './CardVideo'
 import useStoreFavorites from '../hooks/useStoreFavorites'
 import useStoreVideo from '../hooks/useStoreVideo'

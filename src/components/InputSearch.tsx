@@ -10,7 +10,7 @@ export default function InputSearch(props: { search: Function }) {
     const updateValue = (event: any) => setValue(event.target.value)
 
     const inputClear = () => {
-        input && (input.current.value = '')
+        if(input) input.current.value = ''
     }
 
     const handleClick = () => {

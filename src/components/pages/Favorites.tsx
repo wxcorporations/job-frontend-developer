@@ -1,5 +1,5 @@
-import React from "react";
-import { useEffect, useMemo } from "react";
+import React, { useLayoutEffect } from "react";
+import { useEffect, useMemo, useCallback } from "react";
 
 import useStoreMenuBar from "../../hooks/useStoreMenuBar";
 import useStoreFavorites from "../../hooks/useStoreFavorites";
@@ -32,6 +32,7 @@ export default function Favorites(props: any) {
             : []
 
     }, [list])
+
 
     const templateFavoriteNone = () => {
         return (

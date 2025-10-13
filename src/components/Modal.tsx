@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React from 'react'
 import './YoutubeEmbed.scss'
 
 export default function Modal(props: any) {    

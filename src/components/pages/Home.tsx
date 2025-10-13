@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import SectionPlayer from "../layout/SectionPlayer"
 import InputSearch from '../InputSearch';
@@ -40,8 +40,8 @@ export default function Home() {
                         className="mb-3"
                         src="/assets/octocat-otimized.png"
                         alt="imagem de um gato com tentaculos de polvo segurando o icone do youtube"
-                        width={196}
-                        height={196}
+                        width={120}
+                        height={120}
                     />
 
                     <InputSearch search={handleSearch}></InputSearch>
