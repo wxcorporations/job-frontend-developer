@@ -15,8 +15,8 @@ module.exports = {
     entry: {
         app: './index.tsx',
     },
-    mode: 'development',
-    // mode: 'production',
+    // mode: 'development',
+    mode: 'production',
     devtool: 'source-map',
     performance: {
         hints: false,
@@ -47,7 +47,8 @@ module.exports = {
     },
     devServer: {
         historyApiFallback: true,
-        host: 'octoplay.com',
+        // host: 'octoplay.com',
+        host: '0.0.0.0',
         port: 3000,
         allowedHosts: [
             '.octoplay.com',

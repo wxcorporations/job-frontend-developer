@@ -1,3 +1,16 @@
+# Como rodar
+
+Somente na primeira vez, rode o comando abaixo para que a imgem do docker serja criada.
+``` shell
+npm run build:image
+```
+****
+Após finalizar a criação da imagem rode o comando para executar o projeto.
+Este modo possibilita rodar o projeto em modo desenvolvimento, com HMR Hot **reload**
+``` shell
+npm run dev
+```
+
 # Intelipost: Teste prático para Frontend Javascript Developer
 
 Este é o teste usado por nós aqui da [Intelipost](http://www.intelipost.com.br) para avaliar tecnicamente os candidatos a nossas vagas de Frontend. Se você estiver participando de um processo seletivo para nossa equipe, certamente em algum momento receberá este link, mas caso você tenha chego aqui "por acaso", sinta-se convidado a desenvolver nosso teste e enviar uma mensagem para nós no e-mail `techtests@intelipost.com.br`. 
