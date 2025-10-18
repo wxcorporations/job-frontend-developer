@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { updateSearch } from '../../store/searchSlice'
+import { updateNextToken, updateSearch } from '../../store/searchSlice'
 
 export default function useStoreSearch() {
     const dispatch = useDispatch()
@@ -9,6 +9,7 @@ export default function useStoreSearch() {
 
     return {
         updateSearch: (data: string) => { dispatch(updateSearch(data)) },
+        updateNextToken: (data: string) => { dispatch(updateNextToken(data)) },
         beforeQuery,
         query
     }

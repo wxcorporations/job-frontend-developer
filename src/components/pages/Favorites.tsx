@@ -54,7 +54,7 @@ export default function Favorites(props: any) {
 
     return (
         <>
-            <h1 className="ms-2 mb-3 text-secondary">Favoritos</h1>
+            <h1 className=" ms-2 mb-3 text-secondary">Favoritos</h1>
             {cards.length ? cards : templateFavoriteNone()}
         </>
     )

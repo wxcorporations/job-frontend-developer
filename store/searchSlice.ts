@@ -5,15 +5,19 @@ const searhSlice = createSlice({
     name: 'search',
     initialState: {
         beforeQuery: '',
-        query: ''
+        query: '',
+        nextToken: ''
     },
     reducers: {
         updateSearch: (state, action) => {
             state.beforeQuery = state.query
             state.query = action.payload
+        },
+        updateNextToken: (state, action) => {
+            state.nextToken = action.payload
         }
     }
 })
 
 export default searhSlice.reducer
-export const { updateSearch } = searhSlice.actions
+export const { updateSearch, updateNextToken } = searhSlice.actions

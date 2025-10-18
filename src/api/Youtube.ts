@@ -9,6 +9,13 @@ function setYoutubeRequestError(message: string, errors?: object[]): ResponseSea
     }
 }
 
+const BASE_PARAMS = {
+    part: 'snippet',
+    key: process.env.YOUTUBE_KEY,
+    maxResults: 10,
+    type: 'video'
+}
+
 export default class Youtube {
     private endpoint: string;
 
@@ -21,10 +28,10 @@ export default class Youtube {
 
         const qs = new URLSearchParams();
 
-        qs.set('key', process.env.YOUTUBE_KEY as string);
+        const _params = { ...BASE_PARAMS, ...params }
 
-        for (const key in params) {
-            qs.set(key, params[key])
+        for (const key in _params) {
+            qs.set(key, _params[key])
         }
 
         return `${this.endpoint}${recurso}?${qs.toString()}`
@@ -32,7 +39,24 @@ export default class Youtube {
 
     async search(value: string, options?: any): Promise<ResponseSearch | ResponseSearchError> {
         try {
-            const url = this.composeURL('search', { q: value, part: 'snippet' })
+            const url = this.composeURL('search', { q: value, part: 'snippet', maxResults: 10 })
+            const result = await fetch(url, { ...options })
+
+            if (!result.ok) {
+                return setYoutubeRequestError('Erro na requisição')
+            }
+
+            const data = await result.json()
+            return data
+
+        } catch (error) {
+            return setYoutubeRequestError('Erro desconhecido!')
+        }
+    }
+
+    async nextVideos(query: string, value: string, options?: any): Promise<ResponseSearch | ResponseSearchError> {
+        try {
+            const url = this.composeURL('search', {q: query, pageToken: value })
             const result = await fetch(url, { ...options })
 
             if (!result.ok) {
