@@ -1,0 +1,19 @@
+.page-error-404 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__img {
+        width: 100%;
+        object-fit: scale-down;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .page-error-404 {
+        &__img {
+            width: unset;
+            object-fit: scale-down;
+        }
+    }
+}

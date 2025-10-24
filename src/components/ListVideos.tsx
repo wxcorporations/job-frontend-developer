@@ -49,7 +49,8 @@ export default function ListVideos(props: { items: Array<any> }): React.ReactNod
             <div className='list-videos'>
                 {cards.length && cards}
             </div>
-            <button onClick={next}>next</button>
+            
+            <button className='list-videos__button mb-5' onClick={next}>+ videos</button>
         </>
     )
 }

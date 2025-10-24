@@ -1,60 +1,57 @@
-import React, { useEffect, useState } from 'react'
-
-import SectionPlayer from "../layout/SectionPlayer"
-import InputSearch from '../InputSearch';
+import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router';
+import { BookmarkHeartFill, PlayCircle, Share } from 'react-bootstrap-icons';
 
 import useYoutubeSearch from '../../hooks/useYoutubeSearch';
-import useStoreMenuBar from '../../hooks/useStoreMenuBar';
 import useStoreVideo from '../../hooks/useStoreVideo';
+import InputSearchREF from '../inputSearchREF';
+import Feature from '../feature';
+
 
 import './Home.scss'
 
 export default function Home() {
-    const [ initial, setInitial] = useState(true)
+    const navigate = useNavigate()
     const { searchVideos } = useYoutubeSearch()
     const { resetPlayer, resetVideos } = useStoreVideo()
-    const { switchSearch } = useStoreMenuBar()
+    
 
     useEffect(() => {
         resetPlayer()
         resetVideos()
-        switchSearch(false)
     }, [])
 
     const handleSearch = async (query:string) => {
         try {
             await searchVideos(query)
-            setInitial(false)
-            if (initial) switchSearch(true)
+            navigate('/play')
             
         } catch (error) {
             console.error(error)
         }
     }
 
-    const initialTemplate = () => {
-        return (
-            <>
-                <div className='initial-template d-flex flex-column align-items-center justify-content-center'>
-                    <img
-                        className="mb-3"
-                        src="/assets/octocat-otimized.png"
-                        alt="imagem de um gato com tentaculos de polvo segurando o icone do youtube"
-                        width={120}
-                        height={120}
-                    />
-
-                    <InputSearch search={handleSearch}></InputSearch>
-                </div>
-            </>
-        )
-    }
-
     return (
         <>
-            {
-                initial ? initialTemplate() : <SectionPlayer />
-            }
+        <div className="home-content">
+            <div className='home'>                    
+                <img className="home__image" src="/assets/person-desktop.png" alt="" />
+
+                <div className="home__content">
+                    <h1 className='home__content-title mb-3'>Dash-play Seu agregador de videos off-line.</h1>
+                    <p className='home__content-label mb-3'>Assísta, favorite e compartilhe direto da sua máquina.</p>
+                    <div className='home__content-search'>
+                        <InputSearchREF search={handleSearch}/>
+                    </div> 
+                </div>
+            </div>
+
+            <div className='home__features'>
+                <Feature icon={<PlayCircle />} title="Assista" description="Assista seus videos do youtube" />
+                <Feature icon={<Share />} title="Compartilhe" description="Compartilhe seu video favorito com seus amigos do youtube e facebook" />
+                <Feature icon={<BookmarkHeartFill />} title="Salve" description="Salve seus favoritos na sua máquina" />
+            </div>
+        </div>
         </>
     )
 }

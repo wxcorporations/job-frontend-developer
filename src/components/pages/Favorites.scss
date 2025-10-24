@@ -1,0 +1,12 @@
+.favorite {
+    &__content {
+        width: 100%;
+        min-height: 85vh;
+    }
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+}

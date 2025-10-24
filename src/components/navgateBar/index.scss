@@ -1,0 +1,116 @@
+@media screen and (max-width: 768px) {
+    .is-hiden {
+        display: none !important;
+        transition: 1s;
+    }
+
+    .navigate-bar {
+        $root: &;
+
+        display: relative;
+
+        &__action {
+            font-size: 16px;
+            padding: 16px;
+        }
+
+        &__icon {
+            display: flex;
+            justify-content: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #efefef;
+        }
+
+        &__back-layer {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9;
+            background-color: rgba(0, 0, 0, 0.356);
+            backdrop-filter: blur(12.5px);
+            -webkit-backdrop-filter: blur(12.5px);
+        }
+
+        &__list {
+            position: fixed;
+            width: 80vw;
+            height: 100vh;
+            top: 0;
+            right: 0;
+            z-index: 10;
+            padding: 16px;
+            background-color: #fffffffc;
+
+            &-close {
+                position: relative;
+                width: 24px;
+                color: red;
+                font-size: 24px;
+            }
+
+            ul {
+                position: relative;
+                bottom: 16px;
+                list-style: none;
+                padding: unset;
+                margin: unset;
+                display: flex;
+                flex-direction: column;
+                align-items: end;
+                margin-top: 32px;
+            }
+
+            li {
+                margin-right: 16px;
+                padding: 12px 0;
+            }
+        }
+
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .navigate-bar {
+        display: relative;
+
+        &__action {
+            display: none;
+        }
+
+        &__icon {
+            display: none;
+        }
+
+        &__back-layer {
+            display: none;
+        }
+
+        &__list {
+            width: unset;
+            height: unset;
+            top: unset;
+            right: unset;
+            z-index: unset;
+            padding: unset;
+
+            &-close {
+                display: none;
+            }
+
+            ul {
+                display: inline-block;
+                position: relative;
+                list-style: none;
+                padding: unset;
+                margin: unset;
+            }
+
+            li {
+                display: inline-block;
+                margin-right: 16px;
+            }
+        }
+    }
+}

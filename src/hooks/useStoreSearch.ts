@@ -6,11 +6,13 @@ export default function useStoreSearch() {
 
     const beforeQuery = useSelector((store:any) => store.search.beforeQuery)
     const query = useSelector((store:any) => store.search.query)
+    const nextToken = useSelector((store:any) => store.search.nextToken)
 
     return {
         updateSearch: (data: string) => { dispatch(updateSearch(data)) },
         updateNextToken: (data: string) => { dispatch(updateNextToken(data)) },
         beforeQuery,
-        query
+        nextToken,
+        query,
     }
 }

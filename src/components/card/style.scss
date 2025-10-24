@@ -1,0 +1,84 @@
+.card {
+    display: flex;
+    background-color: #F9F9F9;
+    border-radius: 9px;
+    max-width: 400px;
+    min-width: 300px;
+    width: 100%;
+
+    &-img {
+        background-color: #D9D9D9;
+        border-radius: 9px;
+        overflow: hidden;
+        min-width: 100px;
+        max-width: 123px;
+        width: 100%;
+
+        img {
+            overflow: hidden;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+
+    &-content {
+        width: 100%;
+        padding: 7px 12px;
+
+
+        &__channel {
+            display: inline-block;
+            line-height: 15px;
+            font-size: 12px;
+            font-weight: 300;
+            color: #FF7125;
+            padding-bottom: 8px;
+        }
+
+        &__title {
+            font-size: 12px;
+            font-weight: 600;
+        }
+    }
+
+    &-action {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        position: relative;
+        padding: 4px 16px;
+        align-self: end;
+
+        &__icon {
+            color: #D9D9D9;
+            font-size: 20px;
+
+            &:hover,
+            &:active {
+                color: #8d7878;
+            }
+
+            &--active {
+                color: #ff0000;
+                font-size: 20px;
+
+                &:hover,
+                &:active {
+                    color: #701313;
+                }
+            }
+        }
+
+        &__shared {
+            color: #D9D9D9;
+            font-size: 20px;
+            padding-top: 8px;
+
+            &:hover,
+            &:active {
+                color: rgb(30, 138, 30);
+            }
+        }
+    }
+}

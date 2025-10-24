@@ -1,0 +1,16 @@
+.link {
+    &__badge {
+        display: inline-block;
+        background-color: #FF0000;
+        padding: 0 8px;
+        color: white;
+        margin-right: 4px;
+        border-radius: 50px;
+    }
+
+    a {
+        text-decoration: none;
+        color: #5A5A5A;
+        font-size: 16px;
+    }
+}

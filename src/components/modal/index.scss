@@ -1,0 +1,48 @@
+.modal {
+    position: fixed;
+    top: 0;
+        left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 100;
+    
+    header {
+        position: relative;
+        z-index: 102;
+    }
+
+    main {
+        position: relative;
+        max-width: 90vw;
+        aspect-ratio: 16 / 9;
+        z-index: 102;
+        margin: 0 auto;
+    }
+
+    &__btn {
+        padding: 16px;
+        width: 24px;
+        height: 24px;
+
+        &-close {
+            display: flex;
+            justify-content: end;
+            color: red;
+            font-size: 24px;
+            padding: 16px;
+            stroke: white;
+        }
+    }
+
+    &__back-layer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #00000075;
+        z-index: 101;
+        backdrop-filter: blur(12.5px);
+        -webkit-backdrop-filter: blur(12.5px);
+    }
+}

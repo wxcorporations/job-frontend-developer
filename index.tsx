@@ -9,6 +9,8 @@ import { BrowserRouter, Route, Routes } from "react-router";
 const Favorites = lazy(() => import("./src/components/pages/Favorites"))
 const About = lazy(() => import("./src/components/pages/About"))
 const Home = lazy(() => import("./src/components/pages/Home"))
+const Play = lazy(() => import("./src/components/pages/Play"))
+const Page404 = lazy(() => import("./src/components/pages/404"))
 
 import PageTop from "./src/components/layout/PageTop";
 import App from "./src/App";
@@ -28,9 +30,11 @@ root.render(
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<App />}>
-                            <Route index element={<Home />} />
-                            <Route path="favorites" element={<Favorites />} />
-                            <Route path="about" element={<About />} />
+                        <Route index element={<Home />} />
+                        <Route path="play" element={<Play />} />
+                        <Route path="favorites" element={<Favorites />} />
+                        <Route path="about" element={<About />} />
+                        <Route path="*" element={<Page404 />} />
                     </Route>
                 </Routes>
             </BrowserRouter>

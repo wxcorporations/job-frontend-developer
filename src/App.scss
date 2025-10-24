@@ -1,0 +1,15 @@
+$size_footer: 117px;
+$size_header_desktop: 100px;
+$size_header_mobile: 64px;
+$size_screen: 100vh;
+
+.main {
+  min-height: calc($size_screen - ($size_footer + $size_header_mobile));
+}
+
+
+@media screen and (min-width: 769px) {
+  .main {
+    min-height: calc($size_screen - ($size_footer + $size_header_desktop));
+  }
+}

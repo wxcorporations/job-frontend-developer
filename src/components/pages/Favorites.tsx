@@ -1,38 +1,55 @@
-import React, { useLayoutEffect } from "react";
-import { useEffect, useMemo, useCallback } from "react";
+import React from "react";
+import { useMemo , useState } from "react";
 
-import useStoreMenuBar from "../../hooks/useStoreMenuBar";
 import useStoreFavorites from "../../hooks/useStoreFavorites";
+import YoutubeEmbed from '../YoutubeEmbed';
 
-import CardVideo from "../CardVideo";
+import CardRef from "../card";
+import Modal from "../modal";
 
+import './Favorites.scss'
 
 export default function Favorites(props: any) {
-    const { switchSearch } = useStoreMenuBar()
     const { list, addFavorite, removeFavorite } = useStoreFavorites()
+    const [modalOpen, setModalOpen] = useState(false)
+    const [videoModal, setVideoModal] = useState('')
+    
+    const handleFavorite = (status:any, data:any ) => {
+        const action = status ? addFavorite : removeFavorite
+        action({...data, status })
+    }
 
-    useEffect(() => {
-        switchSearch(false)
-    }, [])
+    const handleVideoModal = (id:string) => {
+        if(!id) return null
 
+        setVideoModal(id)
+        setModalOpen(true)
+    }
 
-    const toggleFavorite = (data: any) => {
-        data.status ? (addFavorite(data)) : (removeFavorite(data))
+    const whapperCard = (data:any, index:number) => {
+        return  (
+            <>
+                <div className="whapper">
+                    <CardRef 
+                        key={index} 
+                        id={data.id}
+                        img={data.thumbnail} 
+                        channel={data.channel} 
+                        title={data.title} 
+                        active={data.status}
+                        favorite={(status:any) => handleFavorite(status, data)}
+                        play={handleVideoModal}
+                    />
+                </div>
+            </>
+        )
     }
 
     const cards = useMemo(() => {
-        return list.length
-            ? list.map((data: any, index: number) => {
-                return <CardVideo
-                    data={data}
-                    key={`card-${index}`}
-                    handleFavorite={toggleFavorite}
-                />
-            })
-            : []
+        if (!list.length) return []
 
+        return list.map((whapperCard))
     }, [list])
-
 
     const templateFavoriteNone = () => {
         return (
@@ -52,10 +69,21 @@ export default function Favorites(props: any) {
         )
     }
 
+
     return (
         <>
-            <h1 className=" ms-2 mb-3 text-secondary">Favoritos</h1>
-            {cards.length ? cards : templateFavoriteNone()}
+            {
+                modalOpen
+                    ? <div className="whapper-modal">
+                        <Modal close={() => setModalOpen(false)}>
+                            <YoutubeEmbed id={videoModal}/>
+                        </Modal>
+                    </div> 
+                    : ''
+            }
+            <div className="favorite__content">                
+                { cards.length ? <div className="favorite__list">{cards}</div>: templateFavoriteNone() }
+            </div>
         </>
     )
 }

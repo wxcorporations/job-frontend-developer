@@ -1,0 +1,30 @@
+.input-search-ref {
+    display: flex;
+
+    &__input {
+        position: relative;
+        height: 40px;
+        width: 100%;
+        margin-right: 10px;
+        border: none;
+        border-radius: 4px;
+        padding: 0 16px;
+        background-color: #F5F5F5;
+    }
+
+    &__btn {
+        width: 88px;
+        height: 40px;
+        border-radius: 4px;
+        background-color: #ff0000;
+        border: none;
+        color: white;
+
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: #922626;
+        }
+    }
+
+}
