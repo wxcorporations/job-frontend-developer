@@ -36,7 +36,7 @@ export default function Home() {
     return (
         <>
             <div className="home-content">
-                <div className='home animate__animated  animate__delay-1s animate__fadeInDown'>
+                <div className='home animate__animated animate__fadeInDown'>
                     <img 
                         className="home__image" 
                         src={person_390}
