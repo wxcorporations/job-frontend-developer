@@ -5,6 +5,8 @@ import Link from "../link"
 
 import './index.scss'
 
+import logo from '@assets/logo-dash.png'
+
 export default function NavigateBar(props: any) {
     const [close, setClose] = useState(true)
     const [totalFavorite, setTotalFavorite] = useState('0')
@@ -55,14 +57,16 @@ export default function NavigateBar(props: any) {
                             <a href="/" aria-label="link home" className="navigate-bar__icon">
                                 <img
                                     className="menu-bar__icon-img"
-                                    src="/assets/logo-dash.png"
-                                    alt="imagem de um gato com tentaculos de polvo segurando o icone do youtube"
+                                    src={logo}
+                                    alt="logo da marca dash-corp"
                                     height={20}
-                                    loading="lazy"
                                 />
                             </a>
 
                             <ul className="navigate-bar__list-items">
+                                <li>
+                                    <Link url="/">Home</Link>
+                                </li>
                                 <li>
                                     <Link url="/favorites" badge={totalFavorite}>Favorites</Link>
                                 </li>
@@ -72,7 +76,6 @@ export default function NavigateBar(props: any) {
                             </ul>
                         </div>
                     </div>
-
                 </nav>
             </div>
         </>

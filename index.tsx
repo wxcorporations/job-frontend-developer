@@ -25,20 +25,20 @@ pageTop.init()
 const root = createRoot(document.getElementById('root')!);
 root.render(
     <Provider store={store}>
-                        <Suspense fallback={<div>Carregando...</div>}>
-        <PersistGate loading={null} persistor={persistor}>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<App />}>
-                        <Route index element={<Home />} />
-                        <Route path="play" element={<Play />} />
-                        <Route path="favorites" element={<Favorites />} />
-                        <Route path="about" element={<About />} />
-                        <Route path="*" element={<Page404 />} />
-                    </Route>
-                </Routes>
-            </BrowserRouter>
-        </PersistGate>
-                        </Suspense>
+        <Suspense fallback={<div>Carregando...</div>}>
+            <PersistGate loading={null} persistor={persistor}>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/" element={<App />}>
+                            <Route index element={<Home />} />
+                            <Route path="play" element={<Play />} />
+                            <Route path="favorites" element={<Favorites />} />
+                            <Route path="about" element={<About />} />
+                            <Route path="*" element={<Page404 />} />
+                        </Route>
+                    </Routes>
+                </BrowserRouter>
+            </PersistGate>
+        </Suspense>
     </Provider>
 );

@@ -9,6 +9,8 @@ import Modal from "../modal";
 
 import './Favorites.scss'
 
+import octo from "@assets/octocat-zero-otmized.png"
+
 export default function Favorites(props: any) {
     const { list, addFavorite, removeFavorite } = useStoreFavorites()
     const [modalOpen, setModalOpen] = useState(false)
@@ -56,7 +58,7 @@ export default function Favorites(props: any) {
             <>
                 <div className="w-100 vh-75 d-flex flex-column justify-content-center align-items-center">
                     <img
-                        src="/assets/octocat-zero-otmized.png"
+                        src={octo}
                         alt="icon do octocat triste, por não ter favoritos"
                         width={256}
                         height={256}

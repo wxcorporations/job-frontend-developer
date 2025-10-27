@@ -1,4 +1,7 @@
+import React from "react";
 import { createRoot } from "react-dom/client";
+
+import logo from '@assets/logo-dash.png'
 
 export default function PageTop() {
     return {
@@ -7,8 +10,8 @@ export default function PageTop() {
 
             pageTop.render(
                 <>
-                    <title>OCTO-PLAY</title>
-                    <link rel="icon" type="image/png" href="/assets/octocat-icon.png"></link>
+                    <title>Dash-corp</title>
+                    <link rel="icon" type="image/png" href={logo}></link>
                 </>
             )
         }

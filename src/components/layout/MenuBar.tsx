@@ -5,6 +5,7 @@ import Link from "../link"
 import useStoreFavorites from "../../hooks/useStoreFavorites"
 
 import './MenuBar.scss'
+import logo from '@assets/logo-dash.png'
 
 export default function MenuBar(props: {
     children?: React.ReactNode
@@ -17,10 +18,9 @@ export default function MenuBar(props: {
                         <a href="/" aria-label="link home" className="text-decoration-none">
                             <img
                                 className="menu-bar__icon-img"
-                                src="/assets/logo-dash.png"
-                                alt="imagem de um gato com tentaculos de polvo segurando o icone do youtube"
+                                src={logo}
+                                alt="logo da marca dash-corp"
                                 height={20}
-                                loading="lazy"
                             />
                         </a>
                     </div>

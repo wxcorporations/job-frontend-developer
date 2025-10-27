@@ -11,6 +11,8 @@ import useStoreVideo from '../../hooks/useStoreVideo'
 
 import './Play.scss'
 
+import audioNext from '@assets/media/Health_Potion_Drink_With_Gulp_Echo.mp3'
+
 export default function PagePlay() {
     const { addFavorite, removeFavorite, list: favoriteList } = useStoreFavorites()
     const { nextVideos, searchVideos } = useYoutubeSearch()

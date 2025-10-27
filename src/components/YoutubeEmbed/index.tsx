@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './YoutubeEmbed.scss'
+import './index.scss'
 
 type YoutubeEmbedProps = {
     id: string,

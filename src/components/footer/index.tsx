@@ -13,6 +13,7 @@ export default function FooterRef () {
                             <span className="footer__dev-infor">Desenvolvido por Fernando Barros</span>
 
                             <a
+                                aria-label="icone da rede social linkedin"
                                 className="text-center font-weight-lighter text-decoration-none d-inline-block"
                                 href="https://www.linkedin.com/in/fernando-barros-dev/"
                                 target="_blank"
@@ -22,6 +23,7 @@ export default function FooterRef () {
                             </a>
 
                             <a
+                                aria-label="icone da rede social github"
                                 className="text-center font-weight-lighter text-decoration-none text-secondary d-inline-block"
                                 href="https://github.com/wxcorporations"
                                 target="_blank"

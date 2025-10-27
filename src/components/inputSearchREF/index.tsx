@@ -1,9 +1,9 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
+
 import './style.scss'
 
 export default function InputSearchREF (props:any) {
     const inputRef = useRef<any>(null)
-
 
     const handleClick = (e:any) => {
         e.preventDefault();
@@ -11,7 +11,6 @@ export default function InputSearchREF (props:any) {
         if(inputRef) props.search(inputRef.current.value);
         inputRef.current.value = ''
     }
-
 
     return (
         <>

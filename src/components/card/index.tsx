@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { HeartFill, Whatsapp } from 'react-bootstrap-icons';
 
+import audioClick from '@assets/media/Soft_UI_Button_Click_Dry.mp3';
+import audioSwipe from '@assets/media/UI_Swipe_Minimal_2.mp3';
+
+
 import './style.scss';
 export default function CardRef (props:any) {
     const [active, setActive] = useState(false)
@@ -18,11 +22,22 @@ export default function CardRef (props:any) {
     const toggleStatus = () => {
         setActive(!active)
         if(props.favorite) props.favorite(!active) 
+
+         const meuAudio = new Audio(audioClick);
+
+        meuAudio.currentTime = 0; 
+        meuAudio.play();
     }
 
     const handlePlay = () => {
         if (!props.play || !props.id) return console.error('attrs obrigatorios [play, id]')
         props.play(props.id)
+
+        const meuAudio = new Audio(audioSwipe);
+
+        meuAudio.currentTime = 0; 
+        meuAudio.play();
+
     }
 
 
@@ -41,11 +56,11 @@ export default function CardRef (props:any) {
                 <div className='card-action'>
                     <a 
                         className="card-action__shared" 
-                        href={`https://api.whatsapp.com/send?text=Olha esse video que tenho no Dash https://www.youtube.com/embed/${props.id}`} 
+                        href={`https://api.whatsapp.com/send?text=Olha esse video que tenho no Dash https://youtu.be/${props.id}`} 
                         target="_blank" 
                         rel="noreferrer"
                     >
-                            <Whatsapp />
+                        <Whatsapp />
                     </a>
                     
                     <div onClick={toggleStatus}>

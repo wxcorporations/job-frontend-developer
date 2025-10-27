@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Suspense } from "react"
 import Main from './components/layout/Main';
 import MenuBar from "./components/layout/MenuBar"
 import FooterRef from "./components/footer"
@@ -12,7 +12,7 @@ export default function App() {
       <MenuBar />
         <div className="main">
           <Main>
-            <Outlet />
+              <Outlet />
           </Main>
         </div>
       <FooterRef />
