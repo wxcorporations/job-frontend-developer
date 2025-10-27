@@ -7,6 +7,8 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const HtmlCriticalWebpackPlugin = require('html-critical-webpack-plugin');
+
 
 const { PurgeCSSPlugin } = require('purgecss-webpack-plugin');
 const glob = require('glob');
@@ -17,7 +19,7 @@ module.exports = {
     },
     // mode: 'development',
     mode: 'production',
-    devtool: 'source-map',
+    // devtool: 'source-map',
     performance: {
         hints: false,
         maxAssetSize: 50000,
@@ -42,7 +44,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].[hash].js',
+        filename: '[name].[fullhash].js',
         clean: true
     },
     devServer: {
@@ -51,15 +53,15 @@ module.exports = {
         host: '0.0.0.0',
         port: 3000,
         allowedHosts: [
-            '.octoplay.com',
+            '.dash-corp.com.br',
             '.ngrok-free.app',
             '.lhr.life'
         ],
         server: {
             type: 'https',
             options: {
-                key: readFileSync(path.resolve(__dirname, './.key/octoplay.com+3-key.pem')),
-                cert: readFileSync(path.resolve(__dirname, './.key/octoplay.com+3.pem')),
+                key: readFileSync(path.resolve(__dirname, './.key/dash-corp.com.br+2-key.pem')),
+                cert: readFileSync(path.resolve(__dirname, './.key/dash-corp.com.br+2.pem')),
             }
         },
         hot: true,
@@ -69,7 +71,14 @@ module.exports = {
         },
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.jsx']
+        extensions: ['.ts', '.tsx', '.js', '.jsx'],
+        alias: {
+            '@': path.resolve(__dirname, 'src'),
+            '@api': path.resolve(__dirname, 'src/api'),
+            '@hooks': path.resolve(__dirname, 'src/hooks'),
+            '@assets': path.resolve(__dirname, 'src/assets'),
+            '@components': path.resolve(__dirname, 'src/components'),
+        }
     },
     module: {
         rules: [
@@ -79,7 +88,7 @@ module.exports = {
                 exclude: /node_modules/
             },
             {
-                test: /\.s[ac]ss$/i,
+                test: /\.(scss|sass|css)$/i,
                 exclude: /node_modules/,
                 use: [
                     MiniCssExtractPlugin.loader,
@@ -92,6 +101,21 @@ module.exports = {
                 exclude: /node_modules/,
                 use: 'babel-loader'
             },
+            {
+                test: /\.(png|jpg|jpeg|gif|svg|webp)$/i,
+                type: 'asset/resource',
+                generator: {
+                    filename: 'assets/[name].[hash][ext]'
+                }
+            },
+            {
+                test: /\.(mp3|wav|ogg)$/i,
+                type: 'asset/resource',
+
+                generator: {
+                    filename: 'media/[name][ext][query]',
+                },
+            }
         ]
     },
     plugins: [
@@ -102,6 +126,28 @@ module.exports = {
         new PurgeCSSPlugin({
             paths: glob.sync(`${path.join(__dirname, 'src')}/**/*`, { nodir: true }),
         }),
+        new HtmlCriticalWebpackPlugin({
+            base: path.join(path.resolve(__dirname), 'dist/'),
+            src: 'index.html',
+            dest: 'index.html',
+            inline: true,
+            minify: true,
+            extract: true,
+            width: 375,
+            height: 565
+        }),
+        new HtmlCriticalWebpackPlugin(
+            {
+                base: path.join(path.resolve(__dirname), 'dist/'),
+                src: 'index.html',
+                dest: 'index.html',
+                inline: true,
+                minify: true,
+                extract: true,
+                width: 1280,
+                height: 800
+            }
+        ),
         new BundleAnalyzerPlugin({
             analyzerMode: 'static',
             reportFilename: 'report.html',
