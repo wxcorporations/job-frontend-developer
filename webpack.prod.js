@@ -12,7 +12,7 @@ const HtmlCriticalWebpackPlugin = require('html-critical-webpack-plugin');
 
 const CONFIG_PROD = {
     mode: 'production',
-    // devtool: 'source-map',
+    devtool: 'source-map',
     performance: {
         hints: false,
         maxAssetSize: 50000,

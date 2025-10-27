@@ -56,6 +56,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --config webpack.dev.js",
     "build": "webpack build --config webpack.prod.js",
+    "build:analize": "webpack serve --config webpack.prod.js && npm run analize",
     "build:image": "docker build -t octoplay .",
     "nginx:clear": "sudo rm -rf /var/www/dash-corp/*",
     "nginx:copy": "cp -R ./dist/* /var/www/dash-corp/",

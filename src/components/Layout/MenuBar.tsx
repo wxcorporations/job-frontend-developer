@@ -4,9 +4,7 @@ import NavigateBar from "../NavigateBar"
 import './MenuBar.scss'
 import logo from '@assets/logo-dash.png'
 
-export default function MenuBar(props: {
-    children?: React.ReactNode
-}) {
+export default function MenuBar() {
     return (
         <>
             <header className="menu-bar">
@@ -17,7 +15,8 @@ export default function MenuBar(props: {
                                 className="menu-bar__icon-img"
                                 src={logo}
                                 alt="logo da marca dash-corp"
-                                height={20}
+                                width={50}
+                                height={16}
                             />
                         </a>
                     </div>

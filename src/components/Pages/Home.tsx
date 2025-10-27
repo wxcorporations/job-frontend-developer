@@ -8,8 +8,8 @@ import useStoreVideo from '../../hooks/useStoreVideo';
 import InputSearch from '../InputSearch';
 import Feature from '../Feature';
 
-import person_300 from '@assets/person-300.png';
-import person_390 from '@assets/person-390.png';
+// import person_300 from '@assets/person-300.png';
+import person_390 from '@assets/person-390.webp';
 
 import './Home.scss'
 
