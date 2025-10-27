@@ -1,7 +1,8 @@
 @media screen and (max-width: 768px) {
     .is-hiden {
+        opacity: 0;
         display: none !important;
-        transition: 1s;
+        
     }
 
     .navigate-bar {

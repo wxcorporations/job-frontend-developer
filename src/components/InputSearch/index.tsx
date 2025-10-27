@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 
 import './style.scss'
 
-export default function InputSearchREF (props:any) {
+export default function InputSearch (props:any) {
     const inputRef = useRef<any>(null)
 
     const handleClick = (e:any) => {

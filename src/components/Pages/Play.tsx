@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react'
 
-import InputSearchREF from '../inputSearchREF'
+import InputSearch from '../InputSearch'
 import YoutubeEmbed from '../YoutubeEmbed'
-import CardRef from '../card'
+import Card from '../Card'
 
 import useStoreFavorites from '../../hooks/useStoreFavorites'
 import useYoutubeSearch from '../../hooks/useYoutubeSearch'
@@ -10,8 +10,6 @@ import useStoreSearch from '../../hooks/useStoreSearch'
 import useStoreVideo from '../../hooks/useStoreVideo'
 
 import './Play.scss'
-
-import audioNext from '@assets/media/Health_Potion_Drink_With_Gulp_Echo.mp3'
 
 export default function PagePlay() {
     const { addFavorite, removeFavorite, list: favoriteList } = useStoreFavorites()
@@ -55,7 +53,7 @@ export default function PagePlay() {
 
                     return (
                         <>
-                            <CardRef 
+                            <Card 
                                 key={index} 
                                 id={data.id}
                                 img={data.thumbnail} 
@@ -100,7 +98,7 @@ export default function PagePlay() {
             <div className="page-play">
                 <div className="page-play__container">
                     <div className="page-play__actions">
-                        <InputSearchREF search={handleSearch}/>
+                        <InputSearch search={handleSearch}/>
                     </div>
 
                     <div className="page-play__videos">

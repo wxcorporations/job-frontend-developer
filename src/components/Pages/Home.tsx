@@ -5,10 +5,11 @@ import { BookmarkHeartFill, PlayCircle, Share } from 'react-bootstrap-icons';
 import useYoutubeSearch from '../../hooks/useYoutubeSearch';
 import useStoreVideo from '../../hooks/useStoreVideo';
 
-import InputSearchREF from '../inputSearchREF';
-import Feature from '../feature';
+import InputSearch from '../InputSearch';
+import Feature from '../Feature';
 
-import person from '@assets/person-desktop.png';
+import person_300 from '@assets/person-300.png';
+import person_390 from '@assets/person-390.png';
 
 import './Home.scss'
 
@@ -36,13 +37,18 @@ export default function Home() {
         <>
             <div className="home-content">
                 <div className='home animate__animated  animate__delay-1s animate__fadeInDown'>
-                    <img className="home__image" src={person} alt="" loading="lazy" />
+                    <img 
+                        className="home__image" 
+                        src={person_390}
+                        alt="" 
+                        loading="lazy" 
+                    />
 
                     <div className="home__content ">
                         <h1 className='home__content-title mb-3'>Dash-play, seu agregador de videos off-line.</h1>
                         <p className='home__content-label mb-3'>Aqui você ira assistir, salvar e compartilhar seu vídeos favoritos com seu amigos no whatsapp</p>
                         <div className='home__content-search animate__animated animate__delay-3s animate__repeat-2 animate__headShake'>
-                            <InputSearchREF search={handleSearch} />
+                            <InputSearch search={handleSearch} />
                         </div>
                     </div>
                 </div>

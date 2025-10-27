@@ -1,7 +1,7 @@
-import React, { Suspense } from "react"
-import Main from './components/layout/Main';
-import MenuBar from "./components/layout/MenuBar"
-import FooterRef from "./components/footer"
+import React from "react"
+import Main from './components/Layout/Main';
+import MenuBar from "./components/Layout/MenuBar"
+import Footer from "./components/Footer"
 import { Outlet } from "react-router"
 
 import './App.scss'
@@ -15,6 +15,6 @@ export default function App() {
               <Outlet />
           </Main>
         </div>
-      <FooterRef />
+      <Footer />
     </>)
 };

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { ThreeDotsVertical, XSquareFill } from "react-bootstrap-icons"
 import useStoreFavorites from "../../hooks/useStoreFavorites"
-import Link from "../link"
+import Link from "../Link"
 
 import './index.scss'
 
@@ -45,7 +45,7 @@ export default function NavigateBar(props: any) {
                         <ThreeDotsVertical />
                     </div>
 
-                    <div className={getClass()} >
+                    <div className={getClass()}>
                         <div className="navigate-bar__back-layer" onClick={toggleClose}></div>
 
                         <div className="navigate-bar__list">

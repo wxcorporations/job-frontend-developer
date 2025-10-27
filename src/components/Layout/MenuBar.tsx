@@ -1,8 +1,5 @@
 import React from "react"
-import NavigateBar from "../navgateBar"
-import Link from "../link"
-
-import useStoreFavorites from "../../hooks/useStoreFavorites"
+import NavigateBar from "../NavigateBar"
 
 import './MenuBar.scss'
 import logo from '@assets/logo-dash.png'

@@ -1,7 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 
-import logo from '@assets/logo-dash.png'
+import logo from '@assets/logo-dash-icon.png'
 
 export default function PageTop() {
     return {
@@ -10,7 +10,7 @@ export default function PageTop() {
 
             pageTop.render(
                 <>
-                    <title>Dash-corp</title>
+                    <title>Dash corp</title>
                     <link rel="icon" type="image/png" href={logo}></link>
                 </>
             )

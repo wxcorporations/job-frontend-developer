@@ -4,8 +4,8 @@ import { useMemo , useState } from "react";
 import useStoreFavorites from "../../hooks/useStoreFavorites";
 import YoutubeEmbed from '../YoutubeEmbed';
 
-import CardRef from "../card";
-import Modal from "../modal";
+import Card from "../Card";
+import Modal from "../Modal";
 
 import './Favorites.scss'
 
@@ -32,7 +32,7 @@ export default function Favorites(props: any) {
         return  (
             <>
                 <div className="whapper">
-                    <CardRef 
+                    <Card 
                         key={index} 
                         id={data.id}
                         img={data.thumbnail} 
