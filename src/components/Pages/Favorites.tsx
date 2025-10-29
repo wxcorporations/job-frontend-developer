@@ -11,6 +11,8 @@ import './Favorites.scss'
 
 import octo from "@assets/octocat-zero-otmized.png"
 
+import Highlight from "../HighLight";
+
 export default function Favorites(props: any) {
     const { list, addFavorite, removeFavorite } = useStoreFavorites()
     const [modalOpen, setModalOpen] = useState(false)
@@ -29,23 +31,20 @@ export default function Favorites(props: any) {
     }
 
     const whapperCard = (data:any, index:number) => {
-        return  (
-            <>
-                <div className="whapper">
-                    <Card 
-                        key={index} 
-                        id={data.id}
-                        img={data.thumbnail} 
-                        channel={data.channel} 
-                        title={data.title} 
-                        active={data.status}
-                        favorite={(status:any) => handleFavorite(status, data)}
-                        play={handleVideoModal}
-                    />
-                </div>
-            </>
-        )
-    }
+    return (
+        <div className="whapper" key={`card-${data.id}-${index}`}>
+            <Card 
+                id={data.id}
+                img={data.thumbnail}
+                channel={data.channel}
+                title={data.title}
+                active={data.status}
+                favorite={(status:any) => handleFavorite(status, data)}
+                play={handleVideoModal}
+            />
+        </div>
+    )
+}
 
     const cards = useMemo(() => {
         if (!list.length) return []
@@ -74,6 +73,7 @@ export default function Favorites(props: any) {
 
     return (
         <>
+            
             {
                 modalOpen
                     ? <div className="whapper-modal">
@@ -83,7 +83,9 @@ export default function Favorites(props: any) {
                     </div> 
                     : ''
             }
-            <div className="favorite__content">                
+            <div className="favorite__content">
+                <Highlight text="FAVORITOS" description="FAVORITOS"></Highlight>
+                                
                 { cards.length ? <div className="favorite__list">{cards}</div>: templateFavoriteNone() }
             </div>
         </>
