@@ -2,9 +2,8 @@
     display: flex;
     background-color: #F9F9F9;
     border-radius: 9px;
+    width: 300px;
     max-width: 400px;
-    min-width: 300px;
-    width: 100%;
 
     &-img {
         background-color: #D9D9D9;
@@ -74,11 +73,28 @@
             color: #D9D9D9;
             font-size: 20px;
             padding-top: 8px;
+            margin-bottom: 16px;
 
             &:hover,
             &:active {
                 color: rgb(30, 138, 30);
             }
         }
+
+        &__favorite {
+            margin-bottom: 8px;
+        }
+    }
+}
+
+@media screen and (min-width: 360px) {
+    .card {
+        width: 350px;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .card {
+        width: 400px;
     }
 }

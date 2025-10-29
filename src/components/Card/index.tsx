@@ -63,7 +63,7 @@ export default function CardRef (props:any) {
                         <Whatsapp />
                     </a>
                     
-                    <div onClick={toggleStatus}>
+                    <div onClick={toggleStatus} className='card-action__favorite'>
                         <HeartFill className={active ? 'card-action__icon--active' : 'card-action__icon'}/>
                     </div>
                 </div>
