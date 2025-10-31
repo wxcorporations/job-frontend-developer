@@ -23,15 +23,15 @@ export default function PagePlay() {
     const [channel, setChannel] = useState('')
     const [title, setTitle] = useState('')
     const [cards, setCards] = useState([])
-    
 
-    const handleFavorite = (status:any, data:any ) => {
+
+    const handleFavorite = (status: any, data: any) => {
         const action = status ? addFavorite : removeFavorite
-        action({...data, status })
+        action({ ...data, status })
     }
 
-    const mergePlayListToFavorites = (video:any) => {
-        const videoFavorite = favoriteList.find((favorite:any) => favorite.id === video.id)
+    const mergePlayListToFavorites = (video: any) => {
+        const videoFavorite = favoriteList.find((favorite: any) => favorite.id === video.id)
         return videoFavorite ? videoFavorite : video
     }
 
@@ -39,7 +39,7 @@ export default function PagePlay() {
         await nextVideos(query, nextToken)
     }
 
-    const updateVideoPlayer = (id:string) => {
+    const updateVideoPlayer = (id: string) => {
         setIdvideo(id)
         setPlayer(id)
         scrollTopPlay()
@@ -52,31 +52,29 @@ export default function PagePlay() {
                     console.log(data)
 
                     return (
-                        <>
-                            <Card 
-                                key={index} 
-                                id={data.id}
-                                img={data.thumbnail} 
-                                channel={data.channel} 
-                                title={data.title} 
-                                active={data.status}
-                                favorite={(status:any) => handleFavorite(status, data)}
-                                play={updateVideoPlayer}
-                            />
-                        </>
+                        <Card
+                            key={`card-${data.id}-${index}`}
+                            id={data.id}
+                            img={data.thumbnail}
+                            channel={data.channel}
+                            title={data.title}
+                            active={data.status}
+                            favorite={(status: any) => handleFavorite(status, data)}
+                            play={updateVideoPlayer}
+                        />
                     )
                 })
-                : []
-        
-        const { id, title, channel } = list[0] 
+            : []
+
+        const { id, title, channel } = list[0]
         setIdvideo(id)
         setTitle(title)
         setChannel(channel)
 
         setCards(_cards)
     }, [list])
-   
-    const handleSearch = async (query:string) => {
+
+    const handleSearch = async (query: string) => {
         try {
             await searchVideos(query)
             scrollTopPlay()
@@ -98,7 +96,7 @@ export default function PagePlay() {
             <div className="page-play">
                 <div className="page-play__container">
                     <div className="page-play__actions">
-                        <InputSearch search={handleSearch}/>
+                        <InputSearch search={handleSearch} />
                     </div>
 
                     <div className="page-play__videos">
@@ -108,7 +106,7 @@ export default function PagePlay() {
                             <h2 className=''>{title}</h2>
                         </div>
                         <div className="page-play__list">
-                            <div className="page-play__list-items">{ cards.length && cards }</div>
+                            <div className="page-play__list-items">{cards.length && cards}</div>
                             <button className="page-play__list-btn" onClick={getMoreVideos}>+ videos</button>
                         </div>
                     </div>
