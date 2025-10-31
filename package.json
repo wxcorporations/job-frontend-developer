@@ -3,6 +3,7 @@
     "@reduxjs/toolkit": "^2.9.0",
     "animate.css": "^4.1.1",
     "bootstrap": "^5.3.8",
+    "jshashes": "^1.0.8",
     "react": "^19.1.1",
     "react-bootstrap-icons": "^1.11.6",
     "react-dom": "^19.1.1",
