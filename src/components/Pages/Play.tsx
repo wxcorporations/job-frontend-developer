@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef, useMemo } from 'react'
 
 import InputSearch from '../InputSearch'
 import YoutubeEmbed from '../YoutubeEmbed'
@@ -45,8 +45,8 @@ export default function PagePlay() {
         scrollTopPlay()
     }
 
-    useEffect(() => {
-        const _cards = list.length
+    const cardsMemo = useMemo(() => {
+        return list.length
             ? list.map(mergePlayListToFavorites)
                 .map((data: any, index: number) => {
                     console.log(data)
@@ -65,6 +65,10 @@ export default function PagePlay() {
                     )
                 })
             : []
+    }, [list])
+
+    useEffect(() => {
+        const _cards = cardsMemo
 
         const { id, title, channel } = list[0]
         setIdvideo(id)
@@ -83,7 +87,6 @@ export default function PagePlay() {
             console.error(error)
         }
     }
-
 
     const scrollTopPlay = () => {
         if (anchor.current) {
