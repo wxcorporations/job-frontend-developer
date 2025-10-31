@@ -1,13 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { HeartFill, Whatsapp } from 'react-bootstrap-icons';
-
-import audioClick from '@assets/media/Soft_UI_Button_Click_Dry.mp3';
-import audioSwipe from '@assets/media/UI_Swipe_Minimal_2.mp3';
+import useAudio from '../../hooks/useAudio';
 
 import './style.scss';
 
 function Card(props: any) {
     const [active, setActive] = useState(false)
+    const { sound, playSound } = useAudio()
 
     const SIZE = {
         MOBILE: [100, 84],
@@ -23,20 +22,14 @@ function Card(props: any) {
         setActive(!active)
         if (props.favorite) props.favorite(!active)
 
-        const meuAudio = new Audio(audioClick);
-
-        meuAudio.currentTime = 0;
-        meuAudio.play();
+        playSound(sound.Click)
     }, [active, props.favorite])
 
     const handlePlay = useCallback(() => {
         if (!props.play || !props.id) return console.error('attrs obrigatorios [play, id]')
         props.play(props.id)
 
-        const meuAudio = new Audio(audioSwipe);
-
-        meuAudio.currentTime = 0;
-        meuAudio.play();
+        playSound(sound.Swipe)
     }, [props.play, props.id])
 
 
