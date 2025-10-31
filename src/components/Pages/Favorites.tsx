@@ -18,18 +18,6 @@ export default function Favorites(props: any) {
     const [modalOpen, setModalOpen] = useState(false)
     const [videoModal, setVideoModal] = useState('')
 
-    // const handleFavorite = (status:any, data:any ) => {
-    //     const action = status ? addFavorite : removeFavorite
-    //     action({...data, status })
-    // }
-
-    // const handleVideoModal = (id:string) => {
-    //     if(!id) return null
-
-    //     setVideoModal(id)
-    //     setModalOpen(true)
-    // }
-
     const handleFavorite = useCallback((status: any, data: any) => {
         const action = status ? addFavorite : removeFavorite
         action({ ...data, status })
