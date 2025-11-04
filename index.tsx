@@ -33,7 +33,7 @@ root.render(
                             <Route path="play" element={<Page_Play />} />
                             <Route path="favorites" element={<Page_Favorites />} />
                             <Route path="about" element={<Page_About />} />
-                            <Route path="*" element={<Page_404 />} />
+                            {/* <Route path="*" element={<Page_404 />} /> */}
                         </Route>
                     </Routes>
                 </BrowserRouter>
