@@ -2,23 +2,22 @@ import React, { useCallback } from "react";
 import { useMemo, useState } from "react";
 
 import useStoreFavorites from "../../hooks/useStoreFavorites";
-import YoutubeEmbed from '../YoutubeEmbed';
+import octo from "@assets/octocat-zero-otmized.png"
 
-import Card from "../Card";
 import Modal from "../Modal";
+import Highlight from "../HighLight";
+import YoutubeEmbed from '../YoutubeEmbed';
+import CardFavorites from "../CardFavorites";
 
 import './Favorites.scss'
 
-import octo from "@assets/octocat-zero-otmized.png"
-
-import Highlight from "../HighLight";
 
 export default function Favorites(props: any) {
     const { list, addFavorite, removeFavorite } = useStoreFavorites()
     const [modalOpen, setModalOpen] = useState(false)
     const [videoModal, setVideoModal] = useState('')
 
-    const handleFavorite = useCallback((status: any, data: any) => {
+    const handleFavorite = useCallback((status: boolean, data: any) => {
         const action = status ? addFavorite : removeFavorite
         action({ ...data, status })
     }, [addFavorite, removeFavorite])
@@ -35,14 +34,14 @@ export default function Favorites(props: any) {
 
         return (
             <div className="whapper" key={`card-${data.id}`}>
-                <Card
+                <CardFavorites
                     id={data.id}
-                    img={data.thumbnail}
                     channel={data.channel}
+                    status={data.status}
+                    thumbnail={data.thumbnail}
                     title={data.title}
-                    active={data.status}
-                    favorite={onFavorite}
-                    play={handleVideoModal}
+                    handleFavoriteCallback={onFavorite}
+                    handlePlayCallback={handleVideoModal}
                 />
             </div>
         )
@@ -75,6 +74,7 @@ export default function Favorites(props: any) {
 
     return (
         <>
+
 
             {
                 modalOpen

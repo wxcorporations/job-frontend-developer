@@ -16,6 +16,6 @@ export default function useStoreFavorites() {
             dispatch(addFavorite(data)) 
         },
         removeFavorite: (id: string) => { dispatch(removeFavorite(id)) },
-        list 
+        list
     }
 }

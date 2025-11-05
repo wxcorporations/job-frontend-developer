@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react'
+import React, { lazy } from 'react'
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './store/store';
 import { Provider } from 'react-redux';
@@ -24,20 +24,18 @@ const root = createRoot(document.getElementById('root')!);
 
 root.render(
     <Provider store={store}>
-        <Suspense fallback={<div>Carregando...</div>}>
-            <PersistGate loading={null} persistor={persistor}>
-                <BrowserRouter>
-                    <Routes>
-                        <Route path="/" element={<App />}>
-                            <Route index element={<Page_Home />} />
-                            <Route path="play" element={<Page_Play />} />
-                            <Route path="favorites" element={<Page_Favorites />} />
-                            <Route path="about" element={<Page_About />} />
-                            {/* <Route path="*" element={<Page_404 />} /> */}
-                        </Route>
-                    </Routes>
-                </BrowserRouter>
-            </PersistGate>
-        </Suspense>
+        <PersistGate loading={null} persistor={persistor}>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<App />}>
+                        <Route index element={<Page_Home />} />
+                        <Route path="play" element={<Page_Play />} />
+                        <Route path="favorites" element={<Page_Favorites />} />
+                        <Route path="about" element={<Page_About />} />
+                        <Route path="*" element={<Page_404 />} />
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+        </PersistGate>
     </Provider>
 );

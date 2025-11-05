@@ -21,19 +21,19 @@ export default function NavigateBar(props: any) {
     }
 
     useEffect(() => {
-        const len = listFavorites.length
-
-        if (len < 9) {
-            setTotalFavorite(`0${len}`)
-        }
-        
-        if (len > 99) {
-            setTotalFavorite(`+${len}`)
-        }
-
         handleScrollPage()
+    }, [close])
+
+
+    useEffect(() => {
+        let len = listFavorites.length
+       
+        if (len < 9) len = `0${len}`
+        if (len > 99) len = `+${len}`
         
-    }, [close, listFavorites])
+        setTotalFavorite(len)
+
+    }, [listFavorites])
 
     const getClass = () => close ? 'is-hiden' : ''
 

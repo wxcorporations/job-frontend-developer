@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, useMemo } from 'react'
 
 import InputSearch from '../InputSearch'
 import YoutubeEmbed from '../YoutubeEmbed'
-import Card from '../Card'
+import CardPlay from '../CardPlay'
 
 import useStoreFavorites from '../../hooks/useStoreFavorites'
 import useYoutubeSearch from '../../hooks/useYoutubeSearch'
@@ -10,7 +10,6 @@ import useStoreSearch from '../../hooks/useStoreSearch'
 import useStoreVideo from '../../hooks/useStoreVideo'
 
 import './Play.scss'
-
 export default function PagePlay() {
     const { addFavorite, removeFavorite, list: favoriteList } = useStoreFavorites()
     const { nextVideos, searchVideos } = useYoutubeSearch()
@@ -23,7 +22,6 @@ export default function PagePlay() {
     const [channel, setChannel] = useState('')
     const [title, setTitle] = useState('')
     const [cards, setCards] = useState([])
-
 
     const handleFavorite = (status: any, data: any) => {
         const action = status ? addFavorite : removeFavorite
@@ -49,18 +47,16 @@ export default function PagePlay() {
         return list.length
             ? list.map(mergePlayListToFavorites)
                 .map((data: any, index: number) => {
-                    console.log(data)
-
                     return (
-                        <Card
+                        <CardPlay
                             key={`card-${data.id}-${index}`}
                             id={data.id}
-                            img={data.thumbnail}
                             channel={data.channel}
+                            status={data.status}
+                            thumbnail={data.thumbnail}
                             title={data.title}
-                            active={data.status}
-                            favorite={(status: any) => handleFavorite(status, data)}
-                            play={updateVideoPlayer}
+                            handleFavoriteCallback={(status: any) => handleFavorite(status, data)}
+                            handlePlayCallback={updateVideoPlayer}
                         />
                     )
                 })
