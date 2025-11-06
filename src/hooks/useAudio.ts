@@ -6,7 +6,7 @@ import Bubble from '@assets/media/Bubble.mp3';
 export default function useAudio() {
     return {
         sound: { Click, Swipe, Bubble },
-        playSound(sound:any ) {
+        playSound(sound:string ) {
             const _audio = new Audio(sound);
 
             _audio.currentTime = 0;

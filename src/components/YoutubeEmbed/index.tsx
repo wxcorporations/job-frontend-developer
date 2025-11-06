@@ -6,14 +6,15 @@ type YoutubeEmbedProps = {
     id: string,
 }
 
-export default function YoutubeEmbed(props: YoutubeEmbedProps) {
-    const src = `https://www.youtube.com/embed/${props.id}`
-    
+export default function YoutubeEmbed({ id }: YoutubeEmbedProps) {
     return (
-        <>
-            <div className="youtube-embed">
-                <iframe  frameBorder="0" src={src}  allowFullScreen></iframe>
-            </div>
-        </>
+        <div className="youtube-embed">
+            <iframe
+                frameBorder="0"
+                allowFullScreen
+                src={`https://www.youtube.com/embed/${id}`}
+            >
+            </iframe>
+        </div>
     )
 }

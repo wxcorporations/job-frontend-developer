@@ -1,11 +1,21 @@
-import React from 'react'
+import React from "react";
 import './index.scss'
 
-export default function Highlight(props: any) {
+interface HighlightProps {
+    title?: string,
+    description?: string
+}
+
+export default function Highlight({title, description}: HighlightProps) {
     return (
         <div className='highlight'>
-            <h1 className="highlight__title">{props.text && props.text}</h1>
-            <span className="highlight__description animate__animated animate__fadeInUp">{props.description && props.description}</span>
+            { title && <h1 className="highlight__title">{title}</h1> }
+            { 
+                description && 
+                <span className="highlight__description animate__animated animate__fadeInUp">
+                    {description}
+                </span>
+            }
         </div>
     )
 }

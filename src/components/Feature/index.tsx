@@ -1,16 +1,20 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
 import './index.scss'
 
-export default function Feature (props:any) {
+interface FeatureProps {
+    icon?: ReactNode,
+    title?: string,
+    description?: string
+}
+
+export default function Feature({ icon, title, description }: FeatureProps) {
     return (
         <>
             <div className="feature">
-                <div className="feature__icon">
-                    {props.icon && props.icon}
-                </div>
-                <h2>{props.title && props.title}</h2>
-                <p>{props.description && props.description}</p>
+                {icon && <div className="feature__icon"> {icon} </div>}
+                {title && <h2>{title}</h2>}
+                {description && <p>{description}</p>}
             </div>
         </>
     )

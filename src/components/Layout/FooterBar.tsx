@@ -1,5 +1,10 @@
+import React, { ReactNode } from 'react'
 import './FooterBar.scss'
-export default function FooterBar(prop: any) {
+
+interface FooterBarProps {
+    children: ReactNode
+}
+export default function FooterBar({ children }: FooterBarProps) {
     return (
         <>
             <div className="footer-bar">
@@ -14,7 +19,7 @@ export default function FooterBar(prop: any) {
                         </a>
                     </div>
 
-                    {prop.children}
+                    {children}
                 </div>
             </div>
         </>

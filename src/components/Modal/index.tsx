@@ -1,12 +1,17 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { XSquareFill } from "react-bootstrap-icons";
 
 import './index.scss'
 
-export default function modal(props:any) {
+interface ModalProps {
+    onClose: () => void,
+    children: ReactNode
+}
+
+export default function Modal({ children, onClose }: ModalProps) {
     function emitClose() {
-        if (!props.close) return console.error('propr [open] é requirida!');
-        props.close()
+        if (!onClose) return console.error('propr [onClose] é requirida!');
+        onClose()
     }
 
     return (<>
@@ -18,7 +23,7 @@ export default function modal(props:any) {
                     </div>
                 </header>
                 <main>
-                    {props.children}
+                    {children}
                 </main>
                 <div className="modal__back-layer" onClick={emitClose}></div>
             </div>

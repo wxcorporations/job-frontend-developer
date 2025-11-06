@@ -8,7 +8,6 @@ import useStoreVideo from '../../hooks/useStoreVideo';
 import InputSearch from '../InputSearch';
 import Feature from '../Feature';
 
-// import person_300 from '@assets/person-300.png';
 import person_390 from '@assets/person-390.webp';
 
 import './Home.scss'
@@ -48,7 +47,7 @@ export default function Home() {
                         <h1 className='home__content-title mb-3'>Dash-play, seu agregador de videos off-line.</h1>
                         <p className='home__content-label mb-3'>Aqui você ira assistir, salvar e compartilhar seu vídeos favoritos com seu amigos no whatsapp</p>
                         <div className='home__content-search animate__animated animate__delay-3s animate__repeat-2 animate__headShake'>
-                            <InputSearch search={handleSearch} />
+                            <InputSearch onSearch={handleSearch} />
                         </div>
                     </div>
                 </div>

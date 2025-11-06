@@ -95,7 +95,7 @@ export default function PagePlay() {
             <div className="page-play">
                 <div className="page-play__container">
                     <div className="page-play__actions">
-                        <InputSearch search={handleSearch} />
+                        <InputSearch onSearch={handleSearch} />
                     </div>
 
                     <div className="page-play__videos">

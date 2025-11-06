@@ -1,13 +1,19 @@
-import React from "react"
+import React, { ReactNode } from "react"
 
 import './style.scss';
-export default function Link (props:any) {
+
+interface LinkProps {
+    url: string,
+    badge?: string,
+    children: ReactNode
+}
+export default function Link ({ url, badge, children}:LinkProps) {
     return (
         <>
             <div className="link">
-                <a href={props.url}>
-                    {props.badge && <span className="link__badge">{props.badge}</span>}
-                    {props.children && props.children}
+                <a href={url}>
+                    {badge && <span className="link__badge">{badge}</span>}
+                    {children}
                 </a>
             </div>
         </>

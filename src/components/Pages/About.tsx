@@ -7,7 +7,7 @@ export default function About() {
     return (
         <>
             <div className="about">
-                <Highlight text="SOBRE" description="SOBRE"></Highlight>
+                <Highlight title="SOBRE" description="SOBRE"></Highlight>
             </div>
         </>
     )

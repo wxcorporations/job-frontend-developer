@@ -11,8 +11,7 @@ import CardFavorites from "../CardFavorites";
 
 import './Favorites.scss'
 
-
-export default function Favorites(props: any) {
+export default function Favorites() {
     const { list, addFavorite, removeFavorite } = useStoreFavorites()
     const [modalOpen, setModalOpen] = useState(false)
     const [videoModal, setVideoModal] = useState('')
@@ -53,7 +52,7 @@ export default function Favorites(props: any) {
         return list.map((whapperCard))
     }, [list])
 
-    const templateFavoriteNone = () => {
+    const templateListNone = () => {
         return (
             <>
                 <div className="w-100 vh-75 d-flex flex-column justify-content-center align-items-center">
@@ -71,25 +70,36 @@ export default function Favorites(props: any) {
         )
     }
 
+    const templateModal = () => {
+        return (
+            <>
+                {
+                    modalOpen
+                        ? <div className="whapper-modal">
+                            <Modal onClose={() => setModalOpen(false)}>
+                                <YoutubeEmbed id={videoModal} />
+                            </Modal>
+                        </div>
+                        : ''
+                }
+            </>
+        )
+    }
+
 
     return (
         <>
-
-
-            {
-                modalOpen
-                    ? <div className="whapper-modal">
-                        <Modal close={() => setModalOpen(false)}>
-                            <YoutubeEmbed id={videoModal} />
-                        </Modal>
-                    </div>
-                    : ''
-            }
             <div className="favorite__content">
-                <Highlight text="FAVORITOS" description="FAVORITOS"></Highlight>
+                <Highlight title="FAVORITOS" description="FAVORITOS"></Highlight>
 
-                {cards.length ? <div className="favorite__list">{cards}</div> : templateFavoriteNone()}
+                {
+                    cards.length 
+                        ? <div className="favorite__list">{cards}</div> 
+                        : templateListNone()
+                }
             </div>
+
+            { templateModal() }
         </>
     )
 }
