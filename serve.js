@@ -9,10 +9,9 @@ app.use(cors())
 app.get('/download', (req, res) => {
   const url = req.query.url;
   if (!url) return res.status(400).json({ error: 'URL inválida.' });
-  
-  // Comando yt-dlp para jogar o arquivo para stdout
-  const ytDlp = spawn('yt-dlp', ['--cookies-from-browser', 'chrome', '-f', 'mp4', '-o', '-',  url]);
 
+  // Comando yt-dlp para jogar o arquivo para stdout
+  const ytDlp = spawn('yt-dlp', ['-f', 'mp4', '-o', '-', url]);
 
   res.setHeader('Content-Type', 'video/mp4');
   res.setHeader('Content-Disposition', 'attachment; filename="video.mp4"');
@@ -21,6 +20,7 @@ app.get('/download', (req, res) => {
 
   ytDlp.stderr.on('data', (data) => {
     console.error(`yt-dlp error: ${data}`);
+    res.write(data.toString())
   });
 
   ytDlp.on('close', (code) => {
@@ -33,5 +33,8 @@ app.get('/download', (req, res) => {
     }
   });
 });
+
+// yt-dlp -f "bv*+ba/bestvideo+bestaudio/best" -o "%(title)s.%(ext)s" https://www.youtube.com/watch?v=xtzOr3M1jK0
+
 
 app.listen(5000, () => console.log('Servidor ativo!'));
