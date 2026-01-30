@@ -4,6 +4,7 @@ import { BookmarkHeartFill, PlayCircle, Share } from 'react-bootstrap-icons';
 
 import useYoutubeSearch from '../../hooks/useYoutubeSearch';
 import useStoreVideo from '../../hooks/useStoreVideo';
+import useNotify from '../../hooks/useNotify';
 
 import InputSearch from '../InputSearch';
 import Feature from '../Feature';
@@ -16,6 +17,7 @@ export default function Home() {
     const navigate = useNavigate()
     const { searchVideos } = useYoutubeSearch()
     const { resetPlayer, resetVideos } = useStoreVideo()
+    const { MsgError } = useNotify()
 
     useEffect(() => {
         resetPlayer()
@@ -29,6 +31,7 @@ export default function Home() {
 
         } catch (error) {
             console.error(error)
+            MsgError('Erro ao se comunicar com api.', 'erro-youtube')
         }
     }
 
@@ -36,11 +39,12 @@ export default function Home() {
         <>
             <div className="home-content">
                 <div className='home animate__animated animate__fadeInDown'>
-                    <img 
-                        className="home__image" 
+                    <img
+                        className="home__image"
                         src={person_390}
-                        alt="" 
-                        loading="lazy" 
+                        alt="Imagem de um passoa de terno com um laptop no colo, sentada em uma cadeira oval na cor branca com estofado vermelho sorrindo!"
+                        rel='preload'
+                        loading="eager"
                     />
 
                     <div className="home__content ">
@@ -57,6 +61,7 @@ export default function Home() {
                     <Feature icon={<Share />} title="Compartilhe" description="Compartilhe seu video favorito com seus amigos do youtube e facebook" />
                     <Feature icon={<BookmarkHeartFill />} title="Salve" description="Salve seus favoritos na sua máquina" />
                 </div>
+
             </div>
         </>
     )
