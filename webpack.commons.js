@@ -67,7 +67,7 @@ module.exports = {
     plugins: [
         new Dotenv(),
         new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
-        new HtmlWebpackPlugin({ template: './src/index.html' }),
+        new HtmlWebpackPlugin({ template: './src/index.html', scriptLoading: 'blocking' }),
         new ReactRefreshWebpackPlugin(),
     ]
 };
