@@ -5,10 +5,10 @@ import './Main.scss'
 interface MainProps {
     children: ReactNode
 }
-export default function Main({children}: MainProps) {
+export default function Main({ children }: MainProps) {
     return (
-        <div className="main container">
+        <main role='main' className="main container">
             {children}
-        </div>
+        </main>
     )
 }
