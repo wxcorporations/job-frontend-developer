@@ -6,20 +6,22 @@ import { Outlet } from "react-router"
 import { ToastContainer } from "react-toastify";
 
 import './App.scss'
+import ErrorBoundary from "./components/ErrorBoundary";
 
 export default function App() {
   return (
     <>
-      <MenuBar />
-      <div className="main">
-        <Main>
-          <Suspense fallback={<div>Carregando...</div>}>
-            <Outlet />
-          </Suspense>
-        </Main>
-      </div>
-      <Footer />
-
+      <ErrorBoundary>
+        <MenuBar />
+        <div className="main">
+          <Main>
+            <Suspense fallback={<div>Carregando...</div>}>
+              <Outlet />
+            </Suspense>
+          </Main>
+        </div>
+        <Footer />
+      </ErrorBoundary>
       <ToastContainer />
     </>)
 };
