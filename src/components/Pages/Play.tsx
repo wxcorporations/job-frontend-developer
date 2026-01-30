@@ -10,6 +10,7 @@ import useStoreSearch from '../../hooks/useStoreSearch'
 import useStoreVideo from '../../hooks/useStoreVideo'
 
 import './Play.scss'
+
 export default function PagePlay() {
     const { addFavorite, removeFavorite, list: favoriteList } = useStoreFavorites()
     const { nextVideos, searchVideos } = useYoutubeSearch()
@@ -22,6 +23,19 @@ export default function PagePlay() {
     const [channel, setChannel] = useState('')
     const [title, setTitle] = useState('')
     const [cards, setCards] = useState([])
+
+    useEffect(() => {
+        if (list.length === 0) return
+
+        const { id, title, channel } = list[0]
+
+        setIdvideo(id)
+        setTitle(title)
+        setChannel(channel)
+        setCards(cardsMemo)
+
+    }, [list])
+
 
     const handleFavorite = (status: any, data: any) => {
         const action = status ? addFavorite : removeFavorite
@@ -63,17 +77,6 @@ export default function PagePlay() {
             : []
     }, [list])
 
-    useEffect(() => {
-        const _cards = cardsMemo
-
-        const { id, title, channel } = list[0]
-        setIdvideo(id)
-        setTitle(title)
-        setChannel(channel)
-
-        setCards(_cards)
-    }, [list])
-
     const handleSearch = async (query: string) => {
         try {
             await searchVideos(query)
@@ -105,7 +108,7 @@ export default function PagePlay() {
                             <h2 className=''>{title}</h2>
                         </div>
                         <div className="page-play__list">
-                            <div className="page-play__list-items">{cards.length && cards}</div>
+                            {cards.length && <div className="page-play__list-items">{cards}</div>}
                             <button className="page-play__list-btn" onClick={getMoreVideos}>+ videos</button>
                         </div>
                     </div>
