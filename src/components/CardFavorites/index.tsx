@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react"
 import { PlayBtnFill } from "react-bootstrap-icons"
-import { toast } from "react-toastify"
+import useNotify from "../../hooks/useNotify"
 
 import useAudio from "../../hooks/useAudio"
 import Card from "../Card"
@@ -20,6 +20,8 @@ export default function CardFavorites({ id, title, status, channel, thumbnail, h
     const [load, setLoad] = useState(false)
     const [error, setError] = useState(false)
     const { sound, playSound } = useAudio()
+    const { MsgError, MsgSucess } = useNotify()
+
 
     useEffect(() => {
         setActive(status)
@@ -54,7 +56,7 @@ export default function CardFavorites({ id, title, status, channel, thumbnail, h
 
             setLoad(false);
 
-            notifySucess(`Download realizado com sucesso!`)
+            MsgSucess(`Download realizado com sucesso!`)
 
             setTimeout(() => {
                 const a = document.createElement('a');
@@ -67,38 +69,9 @@ export default function CardFavorites({ id, title, status, channel, thumbnail, h
             setLoad(false)
             setError(true)
             console.error(error)
-            notifyError(`Erro no download ${id}!`)
+            MsgError(`Erro no download ${id}!`, id)
         }
     }, [id])
-
-    const notifyError = (msg: string) => {
-        toast.error(msg, {
-            position: "bottom-left",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-            toastId: id,
-            onClose: () => { console.log(error) },
-        });
-    }
-
-    const notifySucess = (msg: string) => {
-        toast.success(msg, {
-            position: "bottom-left",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-            onClose: () => { },
-        });
-    }
 
     return (
         <Card.Root>
@@ -108,10 +81,10 @@ export default function CardFavorites({ id, title, status, channel, thumbnail, h
                 title={title}
                 onPlay={handlePlay}
             />
-            <Card.Content 
+            <Card.Content
                 id={id}
                 channel={channel}
-                title={title} 
+                title={title}
             />
             <Card.Actions>
                 {
