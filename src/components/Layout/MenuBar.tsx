@@ -15,8 +15,7 @@ export default function MenuBar() {
                                 className="menu-bar__icon-img"
                                 src={logo}
                                 alt="logo da marca dash-corp"
-                                width={50}
-                                height={16}
+                                loading="eager"
                             />
                         </a>
                     </div>

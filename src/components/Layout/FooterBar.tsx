@@ -11,7 +11,7 @@ export default function FooterBar({ children }: FooterBarProps) {
                 <div className="container">
                     <div className="d-flex mb-2 p-3">
                         <a
-                            className="w-100 text-center font-weight-lighter text-decoration-none text-secondary"
+                            className="w-100 text-center font-weight-lighter text-decoration-none"
                             href="https://www.linkedin.com/in/fernando-barros-dev/"
                             target="_blank" rel="noreferrer"
                         >
