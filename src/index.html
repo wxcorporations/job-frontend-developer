@@ -10,21 +10,29 @@
     <div id="page-top"></div>
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KNR3QE9KFD"></script>
+    <!-- <script defer src="https://www.googletagmanager.com/gtag/js?id=G-KNR3QE9KFD"></script> -->
+
     <script>
+        const el_script = document.createElement('script')
+
+        el_script.defer = true
+        el_script.src = 'https://www.googletagmanager.com/gtag/js?id=G-KNR3QE9KFD'
+
         const timer = 2000
         setTimeout(() => {
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+            document.head.appendChild(el_script).onload = () => {
+                window.dataLayer = window.dataLayer || [];
+                function gtag() { dataLayer.push(arguments); }
+                gtag('js', new Date());
 
-            gtag('config', 'G-KNR3QE9KFD');
+                gtag('config', 'G-KNR3QE9KFD');
+            }
         }, timer)
-        
+
     </script>
 </head>
 
-<body>
+<body style="background-color: white;">
     <div id="root"></div>
 </body>
 
