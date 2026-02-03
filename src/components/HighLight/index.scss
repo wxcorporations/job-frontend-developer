@@ -41,7 +41,7 @@ $description_size_mobile: calc(54 / 16);
 @media screen and (max-width: 768px) {
     .highlight {
         height: 74px;
-        
+
         &__title {
             font-size: #{$title_size_mobile}rem;
         }
