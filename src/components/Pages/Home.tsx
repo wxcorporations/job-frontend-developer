@@ -13,6 +13,16 @@ import person_390 from '@assets/person-390.webp';
 
 import './Home.scss'
 
+const TEXTS = {
+    TITLE: 'Dash-play, seu agregador de vídeos offline.',
+    DESCRIPTION: 'Aqui, você assiste, salva e compartilha seus vídeos favoritos com os amigos no WhatsApp – tudo rápido e organizado!',
+    FEATURES: {
+        WATCH: 'Assista seus videos do youtube',
+        SHARED: 'Compartilhe seu vídeo favorito com amigos no whatsapp.',
+        SAVE: 'Salve seus favoritos para acessar rapidinho quando quiser.'
+    }
+}
+
 export default function Home() {
     const navigate = useNavigate()
     const { searchVideos } = useYoutubeSearch()
@@ -48,8 +58,8 @@ export default function Home() {
                     />
 
                     <div className="home__content ">
-                        <h1 className='home__content-title mb-3'>Dash-play, seu agregador de videos off-line.</h1>
-                        <p className='home__content-label mb-3'>Aqui você ira assistir, salvar e compartilhar seu vídeos favoritos com seu amigos no whatsapp</p>
+                        <h1 className='home__content-title mb-3'>{TEXTS.TITLE}</h1>
+                        <p className='home__content-label mb-3'>{TEXTS.DESCRIPTION}</p>
                         <div className='home__content-search animate__animated animate__delay-3s animate__repeat-2 animate__headShake'>
                             <InputSearch onSearch={handleSearch} />
                         </div>
@@ -57,9 +67,9 @@ export default function Home() {
                 </div>
 
                 <div className='home__features home animate__animated  animate__delay-1s animate__fadeIn'>
-                    <Feature icon={<PlayCircle />} title="Assista" description="Assista seus videos do youtube" />
-                    <Feature icon={<Share />} title="Compartilhe" description="Compartilhe seu video favorito com seus amigos do youtube e facebook" />
-                    <Feature icon={<BookmarkHeartFill />} title="Salve" description="Salve seus favoritos na sua máquina" />
+                    <Feature icon={<PlayCircle />} title="Assista" description={TEXTS.FEATURES.WATCH} />
+                    <Feature icon={<Share />} title="Compartilhe" description={TEXTS.FEATURES.SHARED} />
+                    <Feature icon={<BookmarkHeartFill />} title="Salve" description={TEXTS.FEATURES.SAVE} />
                 </div>
 
             </div>
