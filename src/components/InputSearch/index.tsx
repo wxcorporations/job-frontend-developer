@@ -6,7 +6,7 @@ interface InputSearchProps {
     onSearch: (value: string) => void
 }
 
-export default function InputSearch({ onSearch }: InputSearchProps) {
+function InputSearch({ onSearch }: InputSearchProps) {
     const inputRef = useRef<HTMLInputElement | null>(null)
 
     const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
@@ -20,7 +20,7 @@ export default function InputSearch({ onSearch }: InputSearchProps) {
 
     const handleKeyEnter = (event: KeyboardEvent<HTMLInputElement>) => {
         if (!inputRef.current || event.key !== "Enter") return null
-        
+
         onSearch(inputRef.current.value);
         inputRef.current.value = ''
     }
@@ -41,3 +41,5 @@ export default function InputSearch({ onSearch }: InputSearchProps) {
         </>
     )
 }
+
+export default React.memo(InputSearch)
