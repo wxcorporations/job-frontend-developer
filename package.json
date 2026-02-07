@@ -75,7 +75,7 @@
     "nginx:copy": "cp -R ./dist/* /var/www/dash-corp/",
     "nginx": "npm run nginx:clear && npm run nginx:copy",
     "analize": "npx webpack --mode production --profile --json  > ./dist/stats.json",
-    "lint": "npx eslint .",
+    "lint": "npx tslint $(git diff --name-only) --fix",
     "dev": "docker run -v $(pwd):/app -p 3000:3000 octoplay:latest"
   },
   "keywords": [],
