@@ -1,44 +1,52 @@
-import React, { useCallback, useEffect, useState } from "react"
-import { PlayBtnFill } from "react-bootstrap-icons"
+import React, { memo, useCallback, useEffect, useState } from "react";
+import { PlayBtnFill } from "react-bootstrap-icons";
 
-import useAudio from "../../hooks/useAudio"
-import Card from "../Card"
+import useAudio from "../../hooks/useAudio";
+import Card from "../Card";
 
-interface CardPlayProps {
-    id: string,
-    title: string,
-    status: boolean,
-    channel: string,
-    thumbnail: string,
-    handleFavoriteCallback: (status: boolean) => void,
-    handlePlayCallback: (data: any) => void,
+interface IData {
+    id: string;
+    channel: string;
+    status: boolean;
+    thumbnail: string;
+    title: string;
 }
 
-export default function CardPlay({ id, title, status, channel, thumbnail, handleFavoriteCallback, handlePlayCallback }: CardPlayProps) {
-    const [active, setActive] = useState(false)
-    const { sound, playSound } = useAudio()
+interface ICardPlayProps {
+    data: IData;
+    handleFavoriteCallback: (status: boolean, data: IData) => void;
+    handlePlayCallback: (data: any) => void;
+}
 
-    useEffect(() => { setActive(status) }, [status])
+function CardPlay({ data, handleFavoriteCallback, handlePlayCallback }: ICardPlayProps) {
+    const { id, title, status, channel, thumbnail } = data;
 
+    const [active, setActive] = useState(false);
+    const { sound, playSound } = useAudio();
+
+    useEffect(() => { setActive(status); }, [status]);
 
     const toggleStatusFavorite = useCallback(() => {
-        setActive(!active)
-        if (handleFavoriteCallback) handleFavoriteCallback(!active)
+        setActive(!active);
+        if (handleFavoriteCallback) { handleFavoriteCallback(!active, data); }
 
-        playSound(sound.Click)
-    }, [active, handleFavoriteCallback])
+        playSound(sound.Click);
+    }, [active, handleFavoriteCallback]);
 
     const handlePlay = useCallback(() => {
-        if (!handlePlayCallback || !id) return console.error('attrs obrigatorios [play, id]')
-        handlePlayCallback(id)
+        if (!handlePlayCallback || !id) { return console.error("attrs obrigatorios [play, id]"); }
+        handlePlayCallback(id);
 
-        playSound(sound.Swipe)
-    }, [id, handlePlayCallback])
+        playSound(sound.Swipe);
+    }, []);
+
+    const iconPlayBtnFill = () => <PlayBtnFill />;
+    const IconMemo = React.memo(iconPlayBtnFill);
 
     return (
         <Card.Root>
             <Card.Img
-                icon={<PlayBtnFill />}
+                icon={<IconMemo />}
                 img={thumbnail}
                 title={title}
                 onPlay={handlePlay}
@@ -52,5 +60,7 @@ export default function CardPlay({ id, title, status, channel, thumbnail, handle
                 <Card.ActionFavorite status={active} onToggle={toggleStatusFavorite} />
             </Card.Actions>
         </Card.Root>
-    )
+    );
 }
+
+export default React.memo(CardPlay);

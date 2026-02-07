@@ -1,35 +1,62 @@
 import React, { useCallback } from "react";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
+import octo from "@assets/octocat-zero-otmized.png";
 import useStoreFavorites from "../../hooks/useStoreFavorites";
-import octo from "@assets/octocat-zero-otmized.png"
 
-import Modal from "../Modal";
-import Highlight from "../HighLight";
-import YoutubeEmbed from '../YoutubeEmbed';
 import CardFavorites from "../CardFavorites";
+import Categories from "../Categories";
+import Highlight from "../HighLight";
+import Modal from "../Modal";
+import YoutubeEmbed from "../YoutubeEmbed";
 
-import './Favorites.scss'
+import "./Favorites.scss";
+
+interface ICategory {
+    id: number;
+    name: string;
+}
 
 export default function Favorites() {
-    const { list, addFavorite, removeFavorite } = useStoreFavorites()
-    const [modalOpen, setModalOpen] = useState(false)
-    const [videoModal, setVideoModal] = useState('')
+    const { list, addFavorite, removeFavorite } = useStoreFavorites();
+    const [modalOpen, setModalOpen] = useState<boolean>(false);
+    const [videoModal, setVideoModal] = useState<string>("");
+    const [categorias, setCategorias] = useState<ICategory[]>([]);
+
+    const elINputCategory = useRef<HTMLInputElement>(null);
+
+    const factoryCategorie = (name: string): ICategory => {
+        return {
+            id: categorias.length + 1,
+            name,
+        };
+    };
+
+    const handleCreateCategorie = (e: any) => {
+        e.preventDefault();
+
+        if (elINputCategory && elINputCategory.current) {
+            const data: ICategory[] = [...categorias];
+            data.push(factoryCategorie(elINputCategory.current.value));
+
+            setCategorias(data);
+        }
+    };
 
     const handleFavorite = useCallback((status: boolean, data: any) => {
-        const action = status ? addFavorite : removeFavorite
-        action({ ...data, status })
-    }, [addFavorite, removeFavorite])
+        const action = status ? addFavorite : removeFavorite;
+        action({ ...data, status });
+    }, [addFavorite, removeFavorite]);
 
     const handleVideoModal = useCallback((id: string) => {
-        if (!id) return null
+        if (!id) { return null; }
 
-        setVideoModal(id)
-        setModalOpen(true)
-    }, [])
+        setVideoModal(id);
+        setModalOpen(true);
+    }, []);
 
     const whapperCard = (data: any) => {
-        const onFavorite = (status: any) => handleFavorite(status, data)
+        const onFavorite = (status: boolean) => handleFavorite(status, data);
 
         return (
             <div className="whapper" key={`card-${data.id}`}>
@@ -43,14 +70,14 @@ export default function Favorites() {
                     handlePlayCallback={handleVideoModal}
                 />
             </div>
-        )
-    }
+        );
+    };
 
     const cards = useMemo(() => {
-        if (!list.length) return []
+        if (!list.length) { return []; }
 
-        return list.map((whapperCard))
-    }, [list])
+        return list.map((whapperCard));
+    }, [list]);
 
     const templateListNone = () => {
         return (
@@ -67,8 +94,8 @@ export default function Favorites() {
                     </h2>
                 </div>
             </>
-        )
-    }
+        );
+    };
 
     const templateModal = () => {
         return (
@@ -80,12 +107,29 @@ export default function Favorites() {
                                 <YoutubeEmbed id={videoModal} />
                             </Modal>
                         </div>
-                        : ''
+                        : ""
                 }
             </>
-        )
-    }
+        );
+    };
 
+    const TemplateNewCategory = () => {
+        return (
+            <>
+                {
+                    <div>
+                        <form action="#">
+                            <label htmlFor="categoria">Nome da categoria</label>
+                            <br />
+                            <input ref={elINputCategory} id="categoria" type="text" placeholder="Nome" />
+
+                            <button onClick={handleCreateCategorie}>Criar</button>
+                        </form>
+                    </div>
+                }
+            </>
+        );
+    };
 
     return (
         <>
@@ -93,13 +137,26 @@ export default function Favorites() {
                 <Highlight title="FAVORITOS" description="FAVORITOS"></Highlight>
 
                 {
-                    cards.length 
-                        ? <div className="favorite__list">{cards}</div> 
+                    cards.length
+                        ? <div className="favorite__list">{cards}</div>
                         : templateListNone()
+                }
+
+                <button>Criar categoria</button>
+
+                {
+                    categorias.length && categorias.map((item: any) => {
+                        return (<>
+                            <Categories title={item.name} key={item.id}>
+                                <span>Conteudo da seção</span>
+                            </Categories>
+                        </>);
+                    })
                 }
             </div>
 
-            { templateModal() }
+            {templateModal()}
+            {TemplateNewCategory()}
         </>
-    )
+    );
 }
