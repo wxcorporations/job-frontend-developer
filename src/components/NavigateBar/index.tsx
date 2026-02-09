@@ -17,7 +17,7 @@ export default function NavigateBar(props: any) {
     }
 
     const handleScrollPage = () => {
-        document.body.style.overflow = close ?  'unset' : 'hidden'
+        document.body.style.overflow = close ? 'unset' : 'hidden'
     }
 
     useEffect(() => {
@@ -27,10 +27,10 @@ export default function NavigateBar(props: any) {
 
     useEffect(() => {
         let len = listFavorites.length
-       
+
         if (len < 9) len = `0${len}`
         if (len > 99) len = `+${len}`
-        
+
         setTotalFavorite(len)
 
     }, [listFavorites])
@@ -59,7 +59,8 @@ export default function NavigateBar(props: any) {
                                     className="menu-bar__icon-img"
                                     src={logo}
                                     alt="logo da marca dash-corp"
-                                    height={20}
+                                    width={50}
+                                    height={16}
                                 />
                             </a>
 
