@@ -5,9 +5,11 @@
     }
 
     &__list {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        display: grid;
+        grid-template-areas:
+            "favorite__list favorite__list favorite__list";
+        grid-template-columns: 1fr 1fr 1fr;
         gap: 16px;
+        padding: 5px;
     }
 }
