@@ -8,7 +8,7 @@ interface CardImgProps {
     onPlay?: () => void
 }
 
-export default function CardImg({ img, title, icon, onPlay }:CardImgProps) {
+export default function CardImg({ img, title, icon, onPlay }: CardImgProps) {
 
     const SIZE = {
         MOBILE: [100, 84],
@@ -17,8 +17,8 @@ export default function CardImg({ img, title, icon, onPlay }:CardImgProps) {
 
     return (
         <div className='card-img' onClick={onPlay}>
-            { icon && <div className="card-img-icon">{icon}</div>}
-            <img src={img} alt="" title={title || ''} width={SIZE['DESKTOP'][0]} height={SIZE['DESKTOP'][1]} />
+            {icon && <div className="card-img-icon">{icon}</div>}
+            <img loading="lazy" src={img} alt="" title={title || ''} width={SIZE['DESKTOP'][0]} height={SIZE['DESKTOP'][1]} />
         </div>
     )
 }
