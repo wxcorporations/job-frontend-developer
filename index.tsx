@@ -1,26 +1,26 @@
-import React, { lazy } from 'react'
-import { PersistGate } from 'redux-persist/integration/react';
-import { store, persistor } from './store/store';
-import { Provider } from 'react-redux';
+import React, { lazy } from "react";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistor, store } from "./store/store";
 
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router";
 
-const Page_Favorites = lazy(() => import("./src/components/Pages/Favorites"))
-const Page_About = lazy(() => import("./src/components/Pages/About"))
-const Page_Home = lazy(() => import("./src/components/Pages/Home"))
-const Page_Play = lazy(() => import("./src/components/Pages/Play"))
-const Page_404 = lazy(() => import("./src/components/Pages/404"))
+const Page_Favorites = lazy(() => import("./src/components/Pages/Favorites"));
+const Page_About = lazy(() => import("./src/components/Pages/About"));
+const Page_Home = lazy(() => import("./src/components/Pages/Home"));
+const Page_Play = lazy(() => import("./src/components/Pages/Play"));
+const Page_404 = lazy(() => import("./src/components/Pages/404"));
 
-import PageTop from "./src/components/Layout/PageTop";
 import App from "./src/App";
+import PageTop from "./src/components/Layout/PageTop";
 
-import './src/sass/index.scss'
+import "./src/sass/index.scss";
 
-const pageTop = PageTop()
-pageTop.init()
+const pageTop = PageTop();
+pageTop.init();
 
-const root = createRoot(document.getElementById('root')!);
+const root = createRoot(document.getElementById("root")!);
 
 root.render(
     <Provider store={store}>
@@ -37,5 +37,5 @@ root.render(
                 </Routes>
             </BrowserRouter>
         </PersistGate>
-    </Provider>
+    </Provider>,
 );
