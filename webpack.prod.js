@@ -58,6 +58,11 @@ const CONFIG_PROD = {
                     name: 'common',
                     minChunks: 2,  // Mínimo 2 entradas usando
                     priority: -20
+                },
+                styles: {
+                    test: /\.css$/,
+                    name: 'styles',
+                    chunks: 'all',
                 }
             },
 
