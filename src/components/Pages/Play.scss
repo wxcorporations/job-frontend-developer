@@ -59,8 +59,12 @@
         }
     }
 
+    &__title {
+        font-size: 1.4rem;
+    }
 
-    
+
+
 }
 
 .footer {
@@ -81,12 +85,14 @@
             display: flex;
             gap: 20px;
 
-            &-embed {}
+            &-embed {
+                width: 60%;
+            }
 
         }
 
         &__list {
-            width: 50%;
+            width: 40%;
 
             &-items {
                 display: flex;
@@ -101,5 +107,11 @@
 
     .footer {
         margin-bottom: unset;
+    }
+}
+
+@media screen and (min-width: 1221px) {
+    .page-play {
+        &__list {}
     }
 }

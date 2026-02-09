@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import CardPlay from "../CardPlay";
 import InputSearch from "../InputSearch";
@@ -99,10 +99,12 @@ export default function PagePlay() {
                         <div className="page-play__videos-embed" ref={anchor}>
                             <YoutubeEmbed id={idvideo || player} />
                             <span className="mt-2 mb-3">{channel}</span>
-                            <h2 className="">{title}</h2>
+                            <h2 className="page-play__title">{title}</h2>
                         </div>
                         <div className="page-play__list">
-                            {cards.length && <div className="page-play__list-items">{cards}</div>}
+                            <Suspense fallback={<div>Carregando...</div>}>
+                                <div className="page-play__list-items">{cards}</div>
+                            </Suspense>
                             <button className="page-play__list-btn" onClick={getMoreVideos}>+ videos</button>
                         </div>
                     </div>
