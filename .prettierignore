@@ -2,6 +2,7 @@
 *.md
 .gitignore
 .prettierignore
+.eslintignore
 .husky/
 dist/
 node_modules/
