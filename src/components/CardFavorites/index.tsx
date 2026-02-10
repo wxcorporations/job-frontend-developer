@@ -1,102 +1,117 @@
-import React, { useCallback, useEffect, useState } from "react"
-import { PlayBtnFill } from "react-bootstrap-icons"
-import useNotify from "../../hooks/useNotify"
+import React, { useCallback, useEffect, useState } from 'react'
+import { PlayBtnFill } from 'react-bootstrap-icons'
+import useNotify from '../../hooks/useNotify'
 
-import useAudio from "../../hooks/useAudio"
-import Card from "../Card"
+import useAudio from '../../hooks/useAudio'
+import Card from '../Card'
 
-interface CardFavoritesProps {
-    id: string,
-    title: string,
-    status: boolean,
-    channel: string,
-    thumbnail: string,
-    handleFavoriteCallback: (status: boolean) => void,
-    handlePlayCallback: (data: any) => void,
+interface ICardFavoritesProps {
+  id: string
+  title: string
+  status: boolean
+  channel: string
+  thumbnail: string
+  handleFavoriteCallback: (status: boolean) => void
+  handlePlayCallback: (data: string) => void
 }
 
-export default function CardFavorites({ id, title, status, channel, thumbnail, handleFavoriteCallback, handlePlayCallback }: CardFavoritesProps) {
-    const [active, setActive] = useState(false)
-    const [load, setLoad] = useState(false)
-    const [error, setError] = useState(false)
-    const { sound, playSound } = useAudio()
-    const { MsgError, MsgSucess } = useNotify()
+function CardFavorites({
+  id,
+  title,
+  status,
+  channel,
+  thumbnail,
+  handleFavoriteCallback,
+  handlePlayCallback,
+}: ICardFavoritesProps) {
+  const [active, setActive] = useState(false)
+  const [load, setLoad] = useState(false)
+  // const [error, setError] = useState(false);
+  const { sound, playSound } = useAudio()
+  const { MsgError, MsgSucess } = useNotify()
 
+  useEffect(() => {
+    setActive(status)
+  }, [status])
 
-    useEffect(() => {
-        setActive(status)
-    }, [status])
+  const toggleStatusFavorite = useCallback(() => {
+    setActive(!active)
+    if (handleFavoriteCallback) {
+      handleFavoriteCallback(!active)
+    }
 
+    playSound(sound.Click)
+  }, [active, handleFavoriteCallback])
 
-    const toggleStatusFavorite = useCallback(() => {
-        setActive(!active)
-        if (handleFavoriteCallback) handleFavoriteCallback(!active)
+  const handlePlay = useCallback(() => {
+    if (!handlePlayCallback || !id) {
+      // console.error("attrs obrigatorios [play, id]");
+      return
+    }
+    handlePlayCallback(id)
 
-        playSound(sound.Click)
-    }, [active, handleFavoriteCallback])
+    playSound(sound.Swipe)
+  }, [id, handlePlayCallback])
 
-    const handlePlay = useCallback(() => {
-        if (!handlePlayCallback || !id) return console.error('attrs obrigatorios [play, id]')
-        handlePlayCallback(id)
+  const downloadVideo = useCallback(async () => {
+    try {
+      setLoad(true)
 
-        playSound(sound.Swipe)
-    }, [id, handlePlayCallback])
+      const urlVideo = `https://youtube.com/watch?v=${id}`
+      const response: Response = await fetch(
+        `http://localhost:5000/download?url=${encodeURIComponent(urlVideo)}`,
+      )
+      const blob = await response.blob()
 
-    const downloadVideo = useCallback(async () => {
-        try {
-            setLoad(true)
+      if (!blob.size) {
+        throw new Error(`Erro no download ${id}`)
+      }
 
-            const urlVideo = `https://youtube.com/watch?v=${id}`
-            const response: any = await fetch(`http://localhost:5000/download?url=${encodeURIComponent(urlVideo)}`);
-            const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob)
 
-            if (!blob.size) throw new Error(`Erro no download ${id}`);
+      setLoad(false)
 
-            const url = window.URL.createObjectURL(blob);
+      MsgSucess(`Download realizado com sucesso!`)
 
-            setLoad(false);
+      setTimeout(() => {
+        const a = document.createElement('a')
+        a.href = url
+        a.download = 'video.mp4'
+        a.click()
+      }, 3000)
+    } catch {
+      setLoad(false)
+      // setError(true);
+      // console.error(error);
+      MsgError(`Erro no download ${id}!`, id)
+    }
+  }, [id])
 
-            MsgSucess(`Download realizado com sucesso!`)
-
-            setTimeout(() => {
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'video.mp4';
-                a.click();
-            }, 3000)
-
-        } catch (error) {
-            setLoad(false)
-            setError(true)
-            console.error(error)
-            MsgError(`Erro no download ${id}!`, id)
-        }
-    }, [id])
-
-    return (
-        <Card.Root>
-            <Card.Img
-                icon={<PlayBtnFill />}
-                img={thumbnail}
-                title={title}
-                onPlay={handlePlay}
+  return (
+    <Card.Root>
+      <Card.Img
+        icon={<PlayBtnFill />}
+        img={thumbnail}
+        title={title}
+        onPlay={handlePlay}
+      />
+      <Card.Content id={id} channel={channel} title={title} />
+      <Card.Actions>
+        {load ? (
+          <Card.ActionLoad />
+        ) : (
+          <>
+            <Card.ActionShared id={id} />
+            <Card.ActionDownload onDownload={downloadVideo} />
+            <Card.ActionFavorite
+              status={status}
+              onToggle={toggleStatusFavorite}
             />
-            <Card.Content
-                id={id}
-                channel={channel}
-                title={title}
-            />
-            <Card.Actions>
-                {
-                    load
-                        ? <Card.ActionLoad />
-                        : (<>
-                            <Card.ActionShared id={id} />
-                            <Card.ActionDownload onDownload={downloadVideo} />
-                            <Card.ActionFavorite status={status} onToggle={toggleStatusFavorite} />
-                        </>)
-                }
-            </Card.Actions>
-        </Card.Root>
-    )
+          </>
+        )}
+      </Card.Actions>
+    </Card.Root>
+  )
 }
+
+export default React.memo(CardFavorites)

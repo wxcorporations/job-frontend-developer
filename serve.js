@@ -1,10 +1,12 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+/* eslint-disable no-undef */
 const { spawn } = require('child_process');
-const fs = require('fs');
+// const fs = require('fs');
 const express = require('express');
 const cors = require('cors');
 const app = express();
 
-app.use(cors())
+app.use(cors());
 
 app.get('/download', (req, res) => {
   const url = req.query.url;
@@ -20,14 +22,14 @@ app.get('/download', (req, res) => {
 
   ytDlp.stderr.on('data', (data) => {
     console.error(`yt-dlp error: ${data}`);
-    res.write(data.toString())
+    res.write(data.toString());
   });
 
   ytDlp.on('close', (code) => {
     if (code !== 0) {
       console.error(`yt-dlp saiu com código ${code}`);
 
-      res.end()
+      res.end();
 
       // Se possível, finalize a resposta com erro (caso ainda não tenha enviado dados)
     }
@@ -36,5 +38,5 @@ app.get('/download', (req, res) => {
 
 // yt-dlp -f "bv*+ba/bestvideo+bestaudio/best" -o "%(title)s.%(ext)s" https://www.youtube.com/watch?v=xtzOr3M1jK0
 
-
+// eslint-disable-next-line no-console
 app.listen(5000, () => console.log('Servidor ativo!'));
