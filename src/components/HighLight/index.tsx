@@ -6,12 +6,12 @@ interface HighlightProps {
     description?: string
 }
 
-export default function Highlight({title, description}: HighlightProps) {
+function Highlight({ title, description }: HighlightProps) {
     return (
         <div className='highlight'>
-            { title && <h1 className="highlight__title">{title}</h1> }
-            { 
-                description && 
+            {title && <h1 className="highlight__title">{title}</h1>}
+            {
+                description &&
                 <span className="highlight__description animate__animated animate__fadeInUp">
                     {description}
                 </span>
@@ -19,3 +19,5 @@ export default function Highlight({title, description}: HighlightProps) {
         </div>
     )
 }
+
+export default React.memo(Highlight)
