@@ -7,23 +7,29 @@ import { defineConfig } from "eslint/config";
 
 export default defineConfig([
   {
-    files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"], 
-    plugins: { js }, 
-    extends: ["js/recommended"], 
-    languageOptions: { globals: globals.browser }, 
+    ignores: ["dist/**", "node_modules/**", "*.config.js", ".*rc.js", "webpack.*.js"]
+  },
+  {
+    files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
+    plugins: { js },
+    extends: ["js/recommended"],
+    languageOptions: { globals: globals.browser },
     rules: {
-      "react/react-in-jsx-scope": "off"
+      "react/react-in-jsx-scope": "off",
+      'no-console': ['error', { allow: ['error'] }],
+      '@typescript-eslint/no-explicit-any': 'warn',
     }
   },
-  { 
-    files: ["**/*.js"], 
-    languageOptions: { sourceType: "script" } 
+  {
+    files: ["**/*.js"],
+    languageOptions: { sourceType: "script" }
   },
   tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
-  { 
-    files: ["**/*.css"], 
-    plugins: { css }, 
-    language: "css/css", 
-    extends: ["css/recommended"] },
+  {
+    files: ["**/*.css"],
+    plugins: { css },
+    language: "css/css",
+    extends: ["css/recommended"]
+  },
 ]);

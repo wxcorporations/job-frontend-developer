@@ -1,0 +1,20 @@
+dist/
+build/
+/coverage
+
+# Dependências
+node_modules/
+
+# Arquivos minificados
+*.min.js
+
+# Arquivos de configuracao
+\.*
+*.md
+commitlint.config.js
+eslint.config.mts
+eslintrc.js
+prettier.config.js
+tsconfig.json
+tslint.json
+webpack.*.js

@@ -2,14 +2,14 @@
 #                           ALIAS
 # =================================================================
 
-alias files_add_stage='git diff --cached --name-only'
+alias FILES_ADD_STAGE='git diff --cached --name-only'
 
 
 # =================================================================
 #                         VARIAVEIS
 # =================================================================
 
-FILES_STAGE=$(files_add_stage)
+FILES_STAGE=$(FILES_ADD_STAGE)
 
 
 if [ -z "$FILES_STAGE" ]; then
@@ -25,12 +25,21 @@ echo Formatando aquivos modificados com [prittier]...
 echo "======================================================\n"
 
 # FORMATAÇÃO
-npx prettier --write $(files_add_stage)
+npx prettier --write $(FILES_ADD_STAGE)
 
 # ADD ARQUIVO FORMATADO A STAGE AUTOMATICAMENTE
 git add $FILES_STAGE
 
 
 # =================================================================
-#                     PADRONIZAR CÓDIGO
+#                    Rodar os linters
+# =================================================================
+
+echo Verificando os linter [ES_LINT]...
+echo "======================================================\n"
+
+npm run lint
+
+# =================================================================
+#                  Rodar os testes unitário
 # =================================================================

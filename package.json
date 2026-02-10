@@ -78,7 +78,9 @@
     "nginx:copy": "cp -R ./dist/* /var/www/dash-corp/",
     "nginx": "npm run nginx:clear && npm run nginx:copy",
     "analize": "npx webpack --mode production --profile --json  > ./dist/stats.json",
-    "lint": "npx tslint $(git diff --name-only) --fix",
+    "lint": "npx eslint $(git diff --name-only) --fix --no-warn-ignored",
+    "lint:all": "npx eslint . --no-warn-ignored",
+    "lint:stage": "npx tslint $(git diff --cached --name-only) --fix",
     "dev": "docker run -v $(pwd):/app -p 3000:3000 octoplay:latest",
     "prepare": "husky"
   },
