@@ -26,6 +26,8 @@
     "@babel/preset-env": "^7.28.3",
     "@babel/preset-react": "^7.27.1",
     "@babel/preset-typescript": "^7.27.1",
+    "@commitlint/cli": "^20.4.1",
+    "@commitlint/config-conventional": "^20.4.1",
     "@eslint/css": "^0.11.1",
     "@eslint/js": "^9.37.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.6.1",
@@ -43,6 +45,7 @@
     "globals": "^16.4.0",
     "html-critical-webpack-plugin": "^2.1.0",
     "html-webpack-plugin": "^5.6.4",
+    "husky": "^9.1.7",
     "image-webpack-loader": "^8.1.0",
     "jiti": "^2.6.1",
     "mini-css-extract-plugin": "^2.9.4",
@@ -76,7 +79,8 @@
     "nginx": "npm run nginx:clear && npm run nginx:copy",
     "analize": "npx webpack --mode production --profile --json  > ./dist/stats.json",
     "lint": "npx tslint $(git diff --name-only) --fix",
-    "dev": "docker run -v $(pwd):/app -p 3000:3000 octoplay:latest"
+    "dev": "docker run -v $(pwd):/app -p 3000:3000 octoplay:latest",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",

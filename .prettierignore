@@ -1,0 +1,9 @@
+*.json
+*.md
+.gitignore
+.prettierignore
+.husky/
+dist/
+node_modules/
+Dockerfile
+eslint.config.mts
