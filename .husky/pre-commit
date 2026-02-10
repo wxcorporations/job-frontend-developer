@@ -2,7 +2,7 @@
 #                           ALIAS
 # =================================================================
 
-alias FILES_ADD_STAGE='git diff --cached --name-only'
+alias FILES_ADD_STAGE='git diff --cached --name-only --diff-filter=d'
 
 
 # =================================================================
