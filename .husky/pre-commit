@@ -12,6 +12,11 @@ alias files_add_stage='git diff --cached --name-only'
 FILES_STAGE=$(files_add_stage)
 
 
+if [ -z "$FILES_STAGE" ]; then
+    echo "Não a arquivos a serem comitados!"
+    exit 1
+fi
+
 # =================================================================
 #                     PADRONIZAR CÓDIGO
 # =================================================================
