@@ -1,21 +1,24 @@
-import { useDispatch, useSelector } from 'react-redux';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useDispatch, useSelector } from 'react-redux'
 import { addFavorite, removeFavorite } from '../../store/favoritesSlice'
 
 export default function useStoreFavorites() {
-    const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
-    const list = useSelector((store:any) => store.favorites.items)
+  const list = useSelector((store: any) => store.favorites.items)
 
-    const hasDuplicate = (value:any) => {
-        return list.find((item:any) => item.id === value.id) || false
-    }
+  const hasDuplicate = (value: any) => {
+    return list.find((item: any) => item.id === value.id) || false
+  }
 
-    return {
-        addFavorite: (data: any) => { 
-            if (hasDuplicate(data)) return 
-            dispatch(addFavorite(data)) 
-        },
-        removeFavorite: (id: string) => { dispatch(removeFavorite(id)) },
-        list
-    }
+  return {
+    addFavorite: (data: any) => {
+      if (hasDuplicate(data)) return
+      dispatch(addFavorite(data))
+    },
+    removeFavorite: (id: string) => {
+      dispatch(removeFavorite(id))
+    },
+    list,
+  }
 }

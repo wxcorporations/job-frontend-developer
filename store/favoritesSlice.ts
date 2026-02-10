@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createSlice } from '@reduxjs/toolkit';
 
 const favoritesSlice = createSlice({
@@ -7,14 +8,14 @@ const favoritesSlice = createSlice({
   },
   reducers: {
     addFavorite: (state, action) => {
-      state.items.push(action.payload)
+      state.items.push(action.payload);
     },
     removeFavorite: (state, action) => ({
       ...state,
-      items: state.items.filter((data: any) => data.id !== action.payload.id)
-    })
-  }
-})
+      items: state.items.filter((data: any) => data.id !== action.payload.id),
+    }),
+  },
+});
 
-export default favoritesSlice.reducer
-export const { addFavorite, removeFavorite } = favoritesSlice.actions
+export default favoritesSlice.reducer;
+export const { addFavorite, removeFavorite } = favoritesSlice.actions;
